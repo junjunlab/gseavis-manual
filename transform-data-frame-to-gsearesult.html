@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 8 Transform data frame to gseaResult | GseaVis Reference Book</title>
+  <meta name="description" content="This is a detailed documentation of ggcirclize package." />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 8 Transform data frame to gseaResult | GseaVis Reference Book" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is a detailed documentation of ggcirclize package." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 8 Transform data frame to gseaResult | GseaVis Reference Book" />
+  
+  <meta name="twitter:description" content="This is a detailed documentation of ggcirclize package." />
+  
+
+<meta name="author" content="Jun Zhang" />
+
+
+<meta name="date" content="2024-10-21" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="compare-term-on-multiple-conditions.html"/>
+<link rel="next" href="circular-gsea-plot.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">GseaVis manual documentation</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#citation"><i class="fa fa-check"></i><b>1.1</b> Citation</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#installation"><i class="fa fa-check"></i><b>1.2</b> Installation</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="basic-usage.html"><a href="basic-usage.html"><i class="fa fa-check"></i><b>2</b> Basic usage</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="basic-usage.html"><a href="basic-usage.html#classic-visualization"><i class="fa fa-check"></i><b>2.1</b> Classic visualization</a></li>
+<li class="chapter" data-level="2.2" data-path="basic-usage.html"><a href="basic-usage.html#marking-gene-names"><i class="fa fa-check"></i><b>2.2</b> Marking gene names</a></li>
+<li class="chapter" data-level="2.3" data-path="basic-usage.html"><a href="basic-usage.html#new-style-graphic"><i class="fa fa-check"></i><b>2.3</b> New style graphic</a></li>
+<li class="chapter" data-level="2.4" data-path="basic-usage.html"><a href="basic-usage.html#add-nes-and-pvalue"><i class="fa fa-check"></i><b>2.4</b> Add NES and Pvalue</a></li>
+<li class="chapter" data-level="2.5" data-path="basic-usage.html"><a href="basic-usage.html#multiple-terms-gsea-plot"><i class="fa fa-check"></i><b>2.5</b> Multiple terms GSEA plot</a></li>
+<li class="chapter" data-level="2.6" data-path="basic-usage.html"><a href="basic-usage.html#kegg-object-with-marking-gene-names"><i class="fa fa-check"></i><b>2.6</b> KEGG object with marking gene names</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="dotplotgsea.html"><a href="dotplotgsea.html"><i class="fa fa-check"></i><b>3</b> dotplotGsea</a></li>
+<li class="chapter" data-level="4" data-path="volcanogsea.html"><a href="volcanogsea.html"><i class="fa fa-check"></i><b>4</b> volcanoGsea</a></li>
+<li class="chapter" data-level="5" data-path="heatmap-annotation-for-terms.html"><a href="heatmap-annotation-for-terms.html"><i class="fa fa-check"></i><b>5</b> Heatmap annotation for terms</a></li>
+<li class="chapter" data-level="6" data-path="parse-output-results-from-gsea-software.html"><a href="parse-output-results-from-gsea-software.html"><i class="fa fa-check"></i><b>6</b> Parse output results from GSEA software</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="parse-output-results-from-gsea-software.html"><a href="parse-output-results-from-gsea-software.html#gsea-software"><i class="fa fa-check"></i><b>6.1</b> GSEA software</a></li>
+<li class="chapter" data-level="6.2" data-path="parse-output-results-from-gsea-software.html"><a href="parse-output-results-from-gsea-software.html#parse-gsea-results"><i class="fa fa-check"></i><b>6.2</b> Parse GSEA results</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="compare-term-on-multiple-conditions.html"><a href="compare-term-on-multiple-conditions.html"><i class="fa fa-check"></i><b>7</b> Compare term on multiple conditions</a></li>
+<li class="chapter" data-level="8" data-path="transform-data-frame-to-gsearesult.html"><a href="transform-data-frame-to-gsearesult.html"><i class="fa fa-check"></i><b>8</b> Transform data frame to gseaResult</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="transform-data-frame-to-gsearesult.html"><a href="transform-data-frame-to-gsearesult.html#dfgo2gsearesult"><i class="fa fa-check"></i><b>8.1</b> dfGO2gseaResult</a></li>
+<li class="chapter" data-level="8.2" data-path="transform-data-frame-to-gsearesult.html"><a href="transform-data-frame-to-gsearesult.html#dfkegg2gsearesult"><i class="fa fa-check"></i><b>8.2</b> dfKEGG2gseaResult</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="circular-gsea-plot.html"><a href="circular-gsea-plot.html"><i class="fa fa-check"></i><b>9</b> Circular GSEA plot</a></li>
+<li class="chapter" data-level="10" data-path="some-utilties.html"><a href="some-utilties.html"><i class="fa fa-check"></i><b>10</b> Some utilties</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="some-utilties.html"><a href="some-utilties.html#fgsea-visualization-with-gseavis"><i class="fa fa-check"></i><b>10.1</b> fgsea visualization with GseaVis</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">GseaVis Reference Book</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="transform-data-frame-to-gsearesult" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Chapter 8</span> Transform data frame to gseaResult<a href="transform-data-frame-to-gsearesult.html#transform-data-frame-to-gsearesult" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>A data frame containg the GSEA results can not be ploted with <strong>enrichplot</strong> functions.
+<strong>enrichplot</strong> only recgnizes <strong>gseaResult</strong> object. So it is a problem to re-plot data if you do not save <strong>gseaResult</strong> object when you do enrichment analysis. Here we supply functions <strong>dfGO2gseaResult</strong> and <strong>dfKEGG2gseaResult </strong> can convert back to <strong>gseaResult</strong> object. This allows
+you do varous plots on this object.</p>
+<p>First we do enrichment analysis:</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="transform-data-frame-to-gsearesult.html#cb73-1" tabindex="-1"></a><span class="fu">library</span>(clusterProfiler)</span>
+<span id="cb73-2"><a href="transform-data-frame-to-gsearesult.html#cb73-2" tabindex="-1"></a><span class="fu">library</span>(org.Hs.eg.db)</span>
+<span id="cb73-3"><a href="transform-data-frame-to-gsearesult.html#cb73-3" tabindex="-1"></a><span class="fu">library</span>(enrichplot)</span>
+<span id="cb73-4"><a href="transform-data-frame-to-gsearesult.html#cb73-4" tabindex="-1"></a><span class="fu">library</span>(GseaVis)</span>
+<span id="cb73-5"><a href="transform-data-frame-to-gsearesult.html#cb73-5" tabindex="-1"></a></span>
+<span id="cb73-6"><a href="transform-data-frame-to-gsearesult.html#cb73-6" tabindex="-1"></a><span class="co"># load test data</span></span>
+<span id="cb73-7"><a href="transform-data-frame-to-gsearesult.html#cb73-7" tabindex="-1"></a><span class="fu">data</span>(geneList, <span class="at">package=</span><span class="st">&quot;DOSE&quot;</span>)</span>
+<span id="cb73-8"><a href="transform-data-frame-to-gsearesult.html#cb73-8" tabindex="-1"></a></span>
+<span id="cb73-9"><a href="transform-data-frame-to-gsearesult.html#cb73-9" tabindex="-1"></a><span class="co"># check</span></span>
+<span id="cb73-10"><a href="transform-data-frame-to-gsearesult.html#cb73-10" tabindex="-1"></a><span class="fu">head</span>(geneList)</span>
+<span id="cb73-11"><a href="transform-data-frame-to-gsearesult.html#cb73-11" tabindex="-1"></a><span class="co"># 4312     8318    10874    55143    55388      991</span></span>
+<span id="cb73-12"><a href="transform-data-frame-to-gsearesult.html#cb73-12" tabindex="-1"></a><span class="co"># 4.572613 4.514594 4.418218 4.144075 3.876258 3.677857</span></span>
+<span id="cb73-13"><a href="transform-data-frame-to-gsearesult.html#cb73-13" tabindex="-1"></a></span>
+<span id="cb73-14"><a href="transform-data-frame-to-gsearesult.html#cb73-14" tabindex="-1"></a><span class="co"># KEGG enrich</span></span>
+<span id="cb73-15"><a href="transform-data-frame-to-gsearesult.html#cb73-15" tabindex="-1"></a>kk <span class="ot">&lt;-</span> <span class="fu">gseKEGG</span>(<span class="at">geneList     =</span> geneList,</span>
+<span id="cb73-16"><a href="transform-data-frame-to-gsearesult.html#cb73-16" tabindex="-1"></a>              <span class="at">organism     =</span> <span class="st">&#39;hsa&#39;</span>,</span>
+<span id="cb73-17"><a href="transform-data-frame-to-gsearesult.html#cb73-17" tabindex="-1"></a>              <span class="at">minGSSize    =</span> <span class="dv">120</span>,</span>
+<span id="cb73-18"><a href="transform-data-frame-to-gsearesult.html#cb73-18" tabindex="-1"></a>              <span class="at">pvalueCutoff =</span> <span class="fl">0.05</span>,</span>
+<span id="cb73-19"><a href="transform-data-frame-to-gsearesult.html#cb73-19" tabindex="-1"></a>              <span class="at">verbose      =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb73-20"><a href="transform-data-frame-to-gsearesult.html#cb73-20" tabindex="-1"></a></span>
+<span id="cb73-21"><a href="transform-data-frame-to-gsearesult.html#cb73-21" tabindex="-1"></a>go <span class="ot">&lt;-</span> <span class="fu">gseGO</span>(<span class="at">geneList =</span> geneList,</span>
+<span id="cb73-22"><a href="transform-data-frame-to-gsearesult.html#cb73-22" tabindex="-1"></a>            <span class="at">ont =</span> <span class="st">&quot;BP&quot;</span>,</span>
+<span id="cb73-23"><a href="transform-data-frame-to-gsearesult.html#cb73-23" tabindex="-1"></a>            <span class="at">keyType =</span> <span class="st">&quot;ENTREZID&quot;</span>,</span>
+<span id="cb73-24"><a href="transform-data-frame-to-gsearesult.html#cb73-24" tabindex="-1"></a>            <span class="at">OrgDb =</span> org.Hs.eg.db,</span>
+<span id="cb73-25"><a href="transform-data-frame-to-gsearesult.html#cb73-25" tabindex="-1"></a>            <span class="at">pvalueCutoff =</span> <span class="fl">0.05</span>)</span>
+<span id="cb73-26"><a href="transform-data-frame-to-gsearesult.html#cb73-26" tabindex="-1"></a></span>
+<span id="cb73-27"><a href="transform-data-frame-to-gsearesult.html#cb73-27" tabindex="-1"></a>KK_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(kk)</span>
+<span id="cb73-28"><a href="transform-data-frame-to-gsearesult.html#cb73-28" tabindex="-1"></a></span>
+<span id="cb73-29"><a href="transform-data-frame-to-gsearesult.html#cb73-29" tabindex="-1"></a><span class="co"># check</span></span>
+<span id="cb73-30"><a href="transform-data-frame-to-gsearesult.html#cb73-30" tabindex="-1"></a><span class="fu">head</span>(KK_df[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span>
+<span id="cb73-31"><a href="transform-data-frame-to-gsearesult.html#cb73-31" tabindex="-1"></a><span class="co">#                ID                             Description setSize enrichmentScore      NES</span></span>
+<span id="cb73-32"><a href="transform-data-frame-to-gsearesult.html#cb73-32" tabindex="-1"></a><span class="co"># hsa04110 hsa04110                              Cell cycle     139       0.6637551 2.827249</span></span>
+<span id="cb73-33"><a href="transform-data-frame-to-gsearesult.html#cb73-33" tabindex="-1"></a><span class="co"># hsa05169 hsa05169            Epstein-Barr virus infection     193       0.4335010 1.927343</span></span>
+<span id="cb73-34"><a href="transform-data-frame-to-gsearesult.html#cb73-34" tabindex="-1"></a><span class="co"># hsa05166 hsa05166 Human T-cell leukemia virus 1 infection     202       0.3893613 1.748318</span></span>
+<span id="cb73-35"><a href="transform-data-frame-to-gsearesult.html#cb73-35" tabindex="-1"></a></span>
+<span id="cb73-36"><a href="transform-data-frame-to-gsearesult.html#cb73-36" tabindex="-1"></a>go_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(go)</span>
+<span id="cb73-37"><a href="transform-data-frame-to-gsearesult.html#cb73-37" tabindex="-1"></a></span>
+<span id="cb73-38"><a href="transform-data-frame-to-gsearesult.html#cb73-38" tabindex="-1"></a><span class="co"># check</span></span>
+<span id="cb73-39"><a href="transform-data-frame-to-gsearesult.html#cb73-39" tabindex="-1"></a><span class="fu">head</span>(go_df[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span>
+<span id="cb73-40"><a href="transform-data-frame-to-gsearesult.html#cb73-40" tabindex="-1"></a><span class="co">#                    ID                          Description setSize enrichmentScore      NES</span></span>
+<span id="cb73-41"><a href="transform-data-frame-to-gsearesult.html#cb73-41" tabindex="-1"></a><span class="co"># GO:0000070 GO:0000070 mitotic sister chromatid segregation     151       0.6795449 2.956225</span></span>
+<span id="cb73-42"><a href="transform-data-frame-to-gsearesult.html#cb73-42" tabindex="-1"></a><span class="co"># GO:0000819 GO:0000819         sister chromatid segregation     184       0.6542189 2.891093</span></span>
+<span id="cb73-43"><a href="transform-data-frame-to-gsearesult.html#cb73-43" tabindex="-1"></a><span class="co"># GO:0098813 GO:0098813       nuclear chromosome segregation     236       0.6307606 2.868515</span></span></code></pre></div>
+<div id="dfgo2gsearesult" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> dfGO2gseaResult<a href="transform-data-frame-to-gsearesult.html#dfgo2gsearesult" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>dfGO2gseaResult</strong> can covert <strong>gseGO</strong> output data frame back into <strong>gseaResult</strong> object,
+first we check the structures of <strong>gseaResult</strong> object:</p>
+<p align="center">
+<img src="local_images/g8.png" width="90%">
+</p>
+<p>Besides you need a annotation object:</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="transform-data-frame-to-gsearesult.html#cb74-1" tabindex="-1"></a>test_go <span class="ot">&lt;-</span> <span class="fu">dfGO2gseaResult</span>(<span class="at">enrich.df =</span> go_df,</span>
+<span id="cb74-2"><a href="transform-data-frame-to-gsearesult.html#cb74-2" tabindex="-1"></a>                           <span class="at">geneList =</span> geneList,</span>
+<span id="cb74-3"><a href="transform-data-frame-to-gsearesult.html#cb74-3" tabindex="-1"></a>                           <span class="at">OrgDb =</span> org.Hs.eg.db)</span></code></pre></div>
+<p align="center">
+<img src="local_images/g9.png" width="90%">
+</p>
+<p>Let’s make a comparison:</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="transform-data-frame-to-gsearesult.html#cb75-1" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
+<span id="cb75-2"><a href="transform-data-frame-to-gsearesult.html#cb75-2" tabindex="-1"></a></span>
+<span id="cb75-3"><a href="transform-data-frame-to-gsearesult.html#cb75-3" tabindex="-1"></a>pnew <span class="ot">&lt;-</span> <span class="fu">dotplot</span>(test_go)</span>
+<span id="cb75-4"><a href="transform-data-frame-to-gsearesult.html#cb75-4" tabindex="-1"></a>praw <span class="ot">&lt;-</span> <span class="fu">dotplot</span>(go)</span>
+<span id="cb75-5"><a href="transform-data-frame-to-gsearesult.html#cb75-5" tabindex="-1"></a></span>
+<span id="cb75-6"><a href="transform-data-frame-to-gsearesult.html#cb75-6" tabindex="-1"></a><span class="fu">plot_grid</span>(praw,pnew)</span></code></pre></div>
+<p align="center">
+<img src="local_images/59.png" width="80%">
+</p>
+<p>Comparison for gsea plot:</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="transform-data-frame-to-gsearesult.html#cb76-1" tabindex="-1"></a><span class="fu">gseaplot2</span>(test_go,<span class="at">geneSetID =</span> <span class="st">&quot;GO:0000070&quot;</span>)</span>
+<span id="cb76-2"><a href="transform-data-frame-to-gsearesult.html#cb76-2" tabindex="-1"></a><span class="fu">gseaplot2</span>(go,<span class="at">geneSetID =</span> <span class="st">&quot;GO:0000070&quot;</span>)</span></code></pre></div>
+<p align="center">
+<img src="local_images/60.png" width="80%">
+</p>
+<p><strong>GseaVis</strong>:</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="transform-data-frame-to-gsearesult.html#cb77-1" tabindex="-1"></a>praw <span class="ot">&lt;-</span> <span class="fu">gseaNb</span>(<span class="at">object =</span> go,<span class="at">geneSetID =</span> <span class="st">&quot;GO:0000070&quot;</span>)</span>
+<span id="cb77-2"><a href="transform-data-frame-to-gsearesult.html#cb77-2" tabindex="-1"></a>pnew <span class="ot">&lt;-</span> <span class="fu">gseaNb</span>(<span class="at">object =</span> test_go,<span class="at">geneSetID =</span> <span class="st">&quot;GO:0000070&quot;</span>)</span>
+<span id="cb77-3"><a href="transform-data-frame-to-gsearesult.html#cb77-3" tabindex="-1"></a></span>
+<span id="cb77-4"><a href="transform-data-frame-to-gsearesult.html#cb77-4" tabindex="-1"></a><span class="fu">plot_grid</span>(praw,pnew)</span></code></pre></div>
+<p align="center">
+<img src="local_images/61.png" width="80%">
+</p>
+</div>
+<div id="dfkegg2gsearesult" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> dfKEGG2gseaResult<a href="transform-data-frame-to-gsearesult.html#dfkegg2gsearesult" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>dfGO2gseaResult</strong> can covert <strong>gseKEGG</strong> output data frame back into <strong>gseaResult</strong> object:</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="transform-data-frame-to-gsearesult.html#cb78-1" tabindex="-1"></a>test_KK <span class="ot">&lt;-</span> <span class="fu">dfKEGG2gseaResult</span>(<span class="at">enrich.df =</span> KK_df,</span>
+<span id="cb78-2"><a href="transform-data-frame-to-gsearesult.html#cb78-2" tabindex="-1"></a>                             <span class="at">geneList =</span> geneList,</span>
+<span id="cb78-3"><a href="transform-data-frame-to-gsearesult.html#cb78-3" tabindex="-1"></a>                             <span class="at">organism =</span> <span class="st">&quot;hsa&quot;</span>)</span></code></pre></div>
+<p align="center">
+<img src="local_images/g10.png" width="90%">
+</p>
+<p>Comparison for scatter plot:</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="transform-data-frame-to-gsearesult.html#cb79-1" tabindex="-1"></a>pnew <span class="ot">&lt;-</span> <span class="fu">dotplot</span>(test_KK)</span>
+<span id="cb79-2"><a href="transform-data-frame-to-gsearesult.html#cb79-2" tabindex="-1"></a>praw <span class="ot">&lt;-</span> <span class="fu">dotplot</span>(kk)</span>
+<span id="cb79-3"><a href="transform-data-frame-to-gsearesult.html#cb79-3" tabindex="-1"></a></span>
+<span id="cb79-4"><a href="transform-data-frame-to-gsearesult.html#cb79-4" tabindex="-1"></a><span class="fu">plot_grid</span>(praw,pnew)</span></code></pre></div>
+<p align="center">
+<img src="local_images/62.png" width="80%">
+</p>
+<p><strong>GseaVis</strong>:</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="transform-data-frame-to-gsearesult.html#cb80-1" tabindex="-1"></a>praw <span class="ot">&lt;-</span> <span class="fu">gseaNb</span>(<span class="at">object =</span> kk,<span class="at">geneSetID =</span> <span class="st">&quot;hsa04151&quot;</span>)</span>
+<span id="cb80-2"><a href="transform-data-frame-to-gsearesult.html#cb80-2" tabindex="-1"></a>pnew <span class="ot">&lt;-</span> <span class="fu">gseaNb</span>(<span class="at">object =</span> test_KK,<span class="at">geneSetID =</span> <span class="st">&quot;hsa04151&quot;</span>)</span>
+<span id="cb80-3"><a href="transform-data-frame-to-gsearesult.html#cb80-3" tabindex="-1"></a></span>
+<span id="cb80-4"><a href="transform-data-frame-to-gsearesult.html#cb80-4" tabindex="-1"></a><span class="fu">plot_grid</span>(praw,pnew)</span></code></pre></div>
+<p align="center">
+<img src="local_images/63.png" width="80%">
+</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="compare-term-on-multiple-conditions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="circular-gsea-plot.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/07-enrich_data_to_enrich_object.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

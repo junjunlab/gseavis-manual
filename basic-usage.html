@@ -199,66 +199,66 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="classic-visualization" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> Classic visualization<a href="basic-usage.html#classic-visualization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>First we load example data:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="basic-usage.html#cb1-1" tabindex="-1"></a><span class="fu">library</span>(GseaVis)</span>
-<span id="cb1-2"><a href="basic-usage.html#cb1-2" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="basic-usage.html#cb1-3" tabindex="-1"></a><span class="co"># load data</span></span>
-<span id="cb1-4"><a href="basic-usage.html#cb1-4" tabindex="-1"></a>test_data <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;gseaRes.RDS&quot;</span>, <span class="at">package =</span> <span class="st">&quot;GseaVis&quot;</span>)</span>
-<span id="cb1-5"><a href="basic-usage.html#cb1-5" tabindex="-1"></a>gseaRes <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(test_data)</span>
-<span id="cb1-6"><a href="basic-usage.html#cb1-6" tabindex="-1"></a>gseaRes</span>
-<span id="cb1-7"><a href="basic-usage.html#cb1-7" tabindex="-1"></a><span class="co"># # Gene Set Enrichment Analysis</span></span>
-<span id="cb1-8"><a href="basic-usage.html#cb1-8" tabindex="-1"></a><span class="co"># #</span></span>
-<span id="cb1-9"><a href="basic-usage.html#cb1-9" tabindex="-1"></a><span class="co"># #...@organism      UNKNOWN</span></span>
-<span id="cb1-10"><a href="basic-usage.html#cb1-10" tabindex="-1"></a><span class="co"># #...@setType   UNKNOWN</span></span>
-<span id="cb1-11"><a href="basic-usage.html#cb1-11" tabindex="-1"></a><span class="co"># #...@geneList      Named num [1:27970] 6.02 5.96 5.84 5.8 5.72 ...</span></span>
-<span id="cb1-12"><a href="basic-usage.html#cb1-12" tabindex="-1"></a><span class="co"># - attr(*, &quot;names&quot;)= chr [1:27970] &quot;Ecscr&quot; &quot;Gm32341&quot; &quot;B130034C11Rik&quot; &quot;Hkdc1&quot; ...</span></span>
-<span id="cb1-13"><a href="basic-usage.html#cb1-13" tabindex="-1"></a><span class="co"># #...nPerm</span></span>
-<span id="cb1-14"><a href="basic-usage.html#cb1-14" tabindex="-1"></a><span class="co"># #...pvalues adjusted by &#39;BH&#39; with cutoff &lt;1</span></span>
-<span id="cb1-15"><a href="basic-usage.html#cb1-15" tabindex="-1"></a><span class="co"># #...4917 enriched terms found</span></span>
-<span id="cb1-16"><a href="basic-usage.html#cb1-16" tabindex="-1"></a><span class="co"># &#39;data.frame&#39;: 4917 obs. of  11 variables:</span></span>
-<span id="cb1-17"><a href="basic-usage.html#cb1-17" tabindex="-1"></a><span class="co">#   $ ID             : chr  &quot;GOBP_REGULATION_OF_VASCULOGENESIS&quot; &quot;GOBP_AMEBOIDAL_TYPE_CELL_MIGRATION&quot; &quot;GOBP_REGULATION_OF_OSSIFICATION&quot; &quot;GOBP_NEGATIVE_REGULATION_OF_EPITHELIAL_CELL_PROLIFERATION&quot; ...</span></span>
-<span id="cb1-18"><a href="basic-usage.html#cb1-18" tabindex="-1"></a><span class="co"># $ Description    : chr  &quot;GOBP_REGULATION_OF_VASCULOGENESIS&quot; &quot;GOBP_AMEBOIDAL_TYPE_CELL_MIGRATION&quot; &quot;GOBP_REGULATION_OF_OSSIFICATION&quot; &quot;GOBP_NEGATIVE_REGULATION_OF_EPITHELIAL_CELL_PROLIFERATION&quot; ...</span></span>
-<span id="cb1-19"><a href="basic-usage.html#cb1-19" tabindex="-1"></a><span class="co"># $ setSize        : int  14 382 106 110 322 209 228 278 11 34 ...</span></span>
-<span id="cb1-20"><a href="basic-usage.html#cb1-20" tabindex="-1"></a><span class="co"># $ enrichmentScore: num  0.803 -0.345 -0.461 -0.456 -0.346 ...</span></span>
-<span id="cb1-21"><a href="basic-usage.html#cb1-21" tabindex="-1"></a><span class="co"># $ NES            : num  1.85 -1.39 -1.61 -1.58 -1.36 ...</span></span>
-<span id="cb1-22"><a href="basic-usage.html#cb1-22" tabindex="-1"></a><span class="co"># $ pvalue         : num  0.000273 0.00051 0.000528 0.000543 0.000853 ...</span></span>
-<span id="cb1-23"><a href="basic-usage.html#cb1-23" tabindex="-1"></a><span class="co"># $ p.adjust       : num  0.667 0.667 0.667 0.667 0.686 ...</span></span>
-<span id="cb1-24"><a href="basic-usage.html#cb1-24" tabindex="-1"></a><span class="co"># $ qvalues        : num  0.667 0.667 0.667 0.667 0.686 ...</span></span>
-<span id="cb1-25"><a href="basic-usage.html#cb1-25" tabindex="-1"></a><span class="co"># $ rank           : num  1515 7626 6611 7802 7751 ...</span></span>
-<span id="cb1-26"><a href="basic-usage.html#cb1-26" tabindex="-1"></a><span class="co"># $ leading_edge   : chr  &quot;tags=29%, list=5%, signal=27%&quot; &quot;tags=36%, list=27%, signal=27%&quot; &quot;tags=39%, list=24%, signal=30%&quot; &quot;tags=42%, list=28%, signal=30%&quot; ...</span></span>
-<span id="cb1-27"><a href="basic-usage.html#cb1-27" tabindex="-1"></a><span class="co"># $ core_enrichment: chr  &quot;Adm/Ramp2/Hey2/Asb4&quot; &quot;Akap12/Ceacam1/Zeb2/Foxp1/Efnb2/Tpbg/Hyal1/Mmp9/Slc8a1/Pfn2/Ltb4r2/Ilk/Bcar1/Gipc1/Plpp3/Arhgef7/Prkx/Epha2/Hda&quot;| __truncated__ &quot;Ddr2/Ifitm5/S1pr1/Tgfb1/Intu/Sox11/Bmp7/Bmpr2/Mdk/Smad3/Fbn2/Tent5a/Adgrv1/Calca/Matn1/Enpp1/Twist1/Alox5/Ccn1/&quot;| __truncated__ &quot;Sparc/Tgfbr3/Ift172/Flt1/Sfrp2/Ceacam1/Pex2/Cdkn1b/Maged1/Efnb2/Klf9/Sfn/Nupr1/Aqp11/Tgfb2/Robo1/Tgfb1/Nr2f2/Rb&quot;| __truncated__ ...</span></span>
-<span id="cb1-28"><a href="basic-usage.html#cb1-28" tabindex="-1"></a><span class="co"># #...Citation</span></span>
-<span id="cb1-29"><a href="basic-usage.html#cb1-29" tabindex="-1"></a><span class="co"># T Wu, E Hu, S Xu, M Chen, P Guo, Z Dai, T Feng, L Zhou, W Tang, L Zhan, X Fu, S Liu, X Bo, and G Yu.</span></span>
-<span id="cb1-30"><a href="basic-usage.html#cb1-30" tabindex="-1"></a><span class="co"># clusterProfiler 4.0: A universal enrichment tool for interpreting omics data.</span></span>
-<span id="cb1-31"><a href="basic-usage.html#cb1-31" tabindex="-1"></a><span class="co"># The Innovation. 2021, 2(3):100141</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="basic-usage.html#cb2-1" tabindex="-1"></a><span class="fu">library</span>(GseaVis)</span>
+<span id="cb2-2"><a href="basic-usage.html#cb2-2" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="basic-usage.html#cb2-3" tabindex="-1"></a><span class="co"># load data</span></span>
+<span id="cb2-4"><a href="basic-usage.html#cb2-4" tabindex="-1"></a>test_data <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;gseaRes.RDS&quot;</span>, <span class="at">package =</span> <span class="st">&quot;GseaVis&quot;</span>)</span>
+<span id="cb2-5"><a href="basic-usage.html#cb2-5" tabindex="-1"></a>gseaRes <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(test_data)</span>
+<span id="cb2-6"><a href="basic-usage.html#cb2-6" tabindex="-1"></a>gseaRes</span>
+<span id="cb2-7"><a href="basic-usage.html#cb2-7" tabindex="-1"></a><span class="co"># # Gene Set Enrichment Analysis</span></span>
+<span id="cb2-8"><a href="basic-usage.html#cb2-8" tabindex="-1"></a><span class="co"># #</span></span>
+<span id="cb2-9"><a href="basic-usage.html#cb2-9" tabindex="-1"></a><span class="co"># #...@organism      UNKNOWN</span></span>
+<span id="cb2-10"><a href="basic-usage.html#cb2-10" tabindex="-1"></a><span class="co"># #...@setType   UNKNOWN</span></span>
+<span id="cb2-11"><a href="basic-usage.html#cb2-11" tabindex="-1"></a><span class="co"># #...@geneList      Named num [1:27970] 6.02 5.96 5.84 5.8 5.72 ...</span></span>
+<span id="cb2-12"><a href="basic-usage.html#cb2-12" tabindex="-1"></a><span class="co"># - attr(*, &quot;names&quot;)= chr [1:27970] &quot;Ecscr&quot; &quot;Gm32341&quot; &quot;B130034C11Rik&quot; &quot;Hkdc1&quot; ...</span></span>
+<span id="cb2-13"><a href="basic-usage.html#cb2-13" tabindex="-1"></a><span class="co"># #...nPerm</span></span>
+<span id="cb2-14"><a href="basic-usage.html#cb2-14" tabindex="-1"></a><span class="co"># #...pvalues adjusted by &#39;BH&#39; with cutoff &lt;1</span></span>
+<span id="cb2-15"><a href="basic-usage.html#cb2-15" tabindex="-1"></a><span class="co"># #...4917 enriched terms found</span></span>
+<span id="cb2-16"><a href="basic-usage.html#cb2-16" tabindex="-1"></a><span class="co"># &#39;data.frame&#39;: 4917 obs. of  11 variables:</span></span>
+<span id="cb2-17"><a href="basic-usage.html#cb2-17" tabindex="-1"></a><span class="co">#   $ ID             : chr  &quot;GOBP_REGULATION_OF_VASCULOGENESIS&quot; &quot;GOBP_AMEBOIDAL_TYPE_CELL_MIGRATION&quot; &quot;GOBP_REGULATION_OF_OSSIFICATION&quot; &quot;GOBP_NEGATIVE_REGULATION_OF_EPITHELIAL_CELL_PROLIFERATION&quot; ...</span></span>
+<span id="cb2-18"><a href="basic-usage.html#cb2-18" tabindex="-1"></a><span class="co"># $ Description    : chr  &quot;GOBP_REGULATION_OF_VASCULOGENESIS&quot; &quot;GOBP_AMEBOIDAL_TYPE_CELL_MIGRATION&quot; &quot;GOBP_REGULATION_OF_OSSIFICATION&quot; &quot;GOBP_NEGATIVE_REGULATION_OF_EPITHELIAL_CELL_PROLIFERATION&quot; ...</span></span>
+<span id="cb2-19"><a href="basic-usage.html#cb2-19" tabindex="-1"></a><span class="co"># $ setSize        : int  14 382 106 110 322 209 228 278 11 34 ...</span></span>
+<span id="cb2-20"><a href="basic-usage.html#cb2-20" tabindex="-1"></a><span class="co"># $ enrichmentScore: num  0.803 -0.345 -0.461 -0.456 -0.346 ...</span></span>
+<span id="cb2-21"><a href="basic-usage.html#cb2-21" tabindex="-1"></a><span class="co"># $ NES            : num  1.85 -1.39 -1.61 -1.58 -1.36 ...</span></span>
+<span id="cb2-22"><a href="basic-usage.html#cb2-22" tabindex="-1"></a><span class="co"># $ pvalue         : num  0.000273 0.00051 0.000528 0.000543 0.000853 ...</span></span>
+<span id="cb2-23"><a href="basic-usage.html#cb2-23" tabindex="-1"></a><span class="co"># $ p.adjust       : num  0.667 0.667 0.667 0.667 0.686 ...</span></span>
+<span id="cb2-24"><a href="basic-usage.html#cb2-24" tabindex="-1"></a><span class="co"># $ qvalues        : num  0.667 0.667 0.667 0.667 0.686 ...</span></span>
+<span id="cb2-25"><a href="basic-usage.html#cb2-25" tabindex="-1"></a><span class="co"># $ rank           : num  1515 7626 6611 7802 7751 ...</span></span>
+<span id="cb2-26"><a href="basic-usage.html#cb2-26" tabindex="-1"></a><span class="co"># $ leading_edge   : chr  &quot;tags=29%, list=5%, signal=27%&quot; &quot;tags=36%, list=27%, signal=27%&quot; &quot;tags=39%, list=24%, signal=30%&quot; &quot;tags=42%, list=28%, signal=30%&quot; ...</span></span>
+<span id="cb2-27"><a href="basic-usage.html#cb2-27" tabindex="-1"></a><span class="co"># $ core_enrichment: chr  &quot;Adm/Ramp2/Hey2/Asb4&quot; &quot;Akap12/Ceacam1/Zeb2/Foxp1/Efnb2/Tpbg/Hyal1/Mmp9/Slc8a1/Pfn2/Ltb4r2/Ilk/Bcar1/Gipc1/Plpp3/Arhgef7/Prkx/Epha2/Hda&quot;| __truncated__ &quot;Ddr2/Ifitm5/S1pr1/Tgfb1/Intu/Sox11/Bmp7/Bmpr2/Mdk/Smad3/Fbn2/Tent5a/Adgrv1/Calca/Matn1/Enpp1/Twist1/Alox5/Ccn1/&quot;| __truncated__ &quot;Sparc/Tgfbr3/Ift172/Flt1/Sfrp2/Ceacam1/Pex2/Cdkn1b/Maged1/Efnb2/Klf9/Sfn/Nupr1/Aqp11/Tgfb2/Robo1/Tgfb1/Nr2f2/Rb&quot;| __truncated__ ...</span></span>
+<span id="cb2-28"><a href="basic-usage.html#cb2-28" tabindex="-1"></a><span class="co"># #...Citation</span></span>
+<span id="cb2-29"><a href="basic-usage.html#cb2-29" tabindex="-1"></a><span class="co"># T Wu, E Hu, S Xu, M Chen, P Guo, Z Dai, T Feng, L Zhou, W Tang, L Zhan, X Fu, S Liu, X Bo, and G Yu.</span></span>
+<span id="cb2-30"><a href="basic-usage.html#cb2-30" tabindex="-1"></a><span class="co"># clusterProfiler 4.0: A universal enrichment tool for interpreting omics data.</span></span>
+<span id="cb2-31"><a href="basic-usage.html#cb2-31" tabindex="-1"></a><span class="co"># The Innovation. 2021, 2(3):100141</span></span></code></pre></div>
 <p>Classic plot:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="basic-usage.html#cb2-1" tabindex="-1"></a><span class="co"># all plot</span></span>
-<span id="cb2-2"><a href="basic-usage.html#cb2-2" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
-<span id="cb2-3"><a href="basic-usage.html#cb2-3" tabindex="-1"></a>       <span class="at">geneSetID =</span> <span class="st">&#39;GOBP_NUCLEOSIDE_DIPHOSPHATE_METABOLIC_PROCESS&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="basic-usage.html#cb3-1" tabindex="-1"></a><span class="co"># all plot</span></span>
+<span id="cb3-2"><a href="basic-usage.html#cb3-2" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
+<span id="cb3-3"><a href="basic-usage.html#cb3-3" tabindex="-1"></a>       <span class="at">geneSetID =</span> <span class="st">&#39;GOBP_NUCLEOSIDE_DIPHOSPHATE_METABOLIC_PROCESS&#39;</span>)</span></code></pre></div>
 <p align="center">
 <img src="local_images/1.png" width="50%">
 </p>
 <p>Using <strong>subPlot</strong> to retain curve plot:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="basic-usage.html#cb3-1" tabindex="-1"></a><span class="co"># retain curve</span></span>
-<span id="cb3-2"><a href="basic-usage.html#cb3-2" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
-<span id="cb3-3"><a href="basic-usage.html#cb3-3" tabindex="-1"></a>       <span class="at">geneSetID =</span> <span class="st">&#39;GOBP_NUCLEOSIDE_DIPHOSPHATE_METABOLIC_PROCESS&#39;</span>,</span>
-<span id="cb3-4"><a href="basic-usage.html#cb3-4" tabindex="-1"></a>       <span class="at">subPlot =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="basic-usage.html#cb4-1" tabindex="-1"></a><span class="co"># retain curve</span></span>
+<span id="cb4-2"><a href="basic-usage.html#cb4-2" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
+<span id="cb4-3"><a href="basic-usage.html#cb4-3" tabindex="-1"></a>       <span class="at">geneSetID =</span> <span class="st">&#39;GOBP_NUCLEOSIDE_DIPHOSPHATE_METABOLIC_PROCESS&#39;</span>,</span>
+<span id="cb4-4"><a href="basic-usage.html#cb4-4" tabindex="-1"></a>       <span class="at">subPlot =</span> <span class="dv">1</span>)</span></code></pre></div>
 <p align="center">
 <img src="local_images/2.png" width="50%">
 </p>
 <p>Retain heatmap and curve:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="basic-usage.html#cb4-1" tabindex="-1"></a><span class="co"># retain curve and heatmap</span></span>
-<span id="cb4-2"><a href="basic-usage.html#cb4-2" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
-<span id="cb4-3"><a href="basic-usage.html#cb4-3" tabindex="-1"></a>       <span class="at">geneSetID =</span> <span class="st">&#39;GOBP_NUCLEOSIDE_DIPHOSPHATE_METABOLIC_PROCESS&#39;</span>,</span>
-<span id="cb4-4"><a href="basic-usage.html#cb4-4" tabindex="-1"></a>       <span class="at">subPlot =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="basic-usage.html#cb5-1" tabindex="-1"></a><span class="co"># retain curve and heatmap</span></span>
+<span id="cb5-2"><a href="basic-usage.html#cb5-2" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
+<span id="cb5-3"><a href="basic-usage.html#cb5-3" tabindex="-1"></a>       <span class="at">geneSetID =</span> <span class="st">&#39;GOBP_NUCLEOSIDE_DIPHOSPHATE_METABOLIC_PROCESS&#39;</span>,</span>
+<span id="cb5-4"><a href="basic-usage.html#cb5-4" tabindex="-1"></a>       <span class="at">subPlot =</span> <span class="dv">2</span>)</span></code></pre></div>
 <p align="center">
 <img src="local_images/3.png" width="50%">
 </p>
 <p>You can define the term width when it is to long:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="basic-usage.html#cb5-1" tabindex="-1"></a><span class="co"># wrap the term title</span></span>
-<span id="cb5-2"><a href="basic-usage.html#cb5-2" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
-<span id="cb5-3"><a href="basic-usage.html#cb5-3" tabindex="-1"></a>       <span class="at">geneSetID =</span> <span class="st">&#39;GOBP_NUCLEOSIDE_DIPHOSPHATE_METABOLIC_PROCESS&#39;</span>,</span>
-<span id="cb5-4"><a href="basic-usage.html#cb5-4" tabindex="-1"></a>       <span class="at">subPlot =</span> <span class="dv">2</span>,</span>
-<span id="cb5-5"><a href="basic-usage.html#cb5-5" tabindex="-1"></a>       <span class="at">termWidth =</span> <span class="dv">30</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="basic-usage.html#cb6-1" tabindex="-1"></a><span class="co"># wrap the term title</span></span>
+<span id="cb6-2"><a href="basic-usage.html#cb6-2" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
+<span id="cb6-3"><a href="basic-usage.html#cb6-3" tabindex="-1"></a>       <span class="at">geneSetID =</span> <span class="st">&#39;GOBP_NUCLEOSIDE_DIPHOSPHATE_METABOLIC_PROCESS&#39;</span>,</span>
+<span id="cb6-4"><a href="basic-usage.html#cb6-4" tabindex="-1"></a>       <span class="at">subPlot =</span> <span class="dv">2</span>,</span>
+<span id="cb6-5"><a href="basic-usage.html#cb6-5" tabindex="-1"></a>       <span class="at">termWidth =</span> <span class="dv">30</span>)</span></code></pre></div>
 <p align="center">
 <img src="local_images/4.png" width="50%">
 </p>
@@ -267,36 +267,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">2.2</span> Marking gene names<a href="basic-usage.html#marking-gene-names" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>At some scenario, you may want to highlight some interested genes in the term and show which
 position they are:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="basic-usage.html#cb6-1" tabindex="-1"></a><span class="co"># add gene in specific pathway</span></span>
-<span id="cb6-2"><a href="basic-usage.html#cb6-2" tabindex="-1"></a>mygene <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Entpd8&quot;</span>,<span class="st">&quot;Htr2a&quot;</span>,<span class="st">&quot;Nt5e&quot;</span>,<span class="st">&quot;Actn3&quot;</span>,<span class="st">&quot;Entpd1&quot;</span>,</span>
-<span id="cb6-3"><a href="basic-usage.html#cb6-3" tabindex="-1"></a>            <span class="st">&quot;Pfkp&quot;</span>, <span class="st">&quot;Tpi1&quot;</span>,<span class="st">&quot;Igf1&quot;</span>,<span class="st">&quot;Ddit4&quot;</span>,<span class="st">&quot;Ak9&quot;</span>)</span>
-<span id="cb6-4"><a href="basic-usage.html#cb6-4" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="basic-usage.html#cb6-5" tabindex="-1"></a><span class="co"># plot</span></span>
-<span id="cb6-6"><a href="basic-usage.html#cb6-6" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
-<span id="cb6-7"><a href="basic-usage.html#cb6-7" tabindex="-1"></a>       <span class="at">geneSetID =</span> <span class="st">&#39;GOBP_NUCLEOSIDE_DIPHOSPHATE_METABOLIC_PROCESS&#39;</span>,</span>
-<span id="cb6-8"><a href="basic-usage.html#cb6-8" tabindex="-1"></a>       <span class="at">subPlot =</span> <span class="dv">2</span>,</span>
-<span id="cb6-9"><a href="basic-usage.html#cb6-9" tabindex="-1"></a>       <span class="at">addGene =</span> mygene)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="basic-usage.html#cb7-1" tabindex="-1"></a><span class="co"># add gene in specific pathway</span></span>
+<span id="cb7-2"><a href="basic-usage.html#cb7-2" tabindex="-1"></a>mygene <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Entpd8&quot;</span>,<span class="st">&quot;Htr2a&quot;</span>,<span class="st">&quot;Nt5e&quot;</span>,<span class="st">&quot;Actn3&quot;</span>,<span class="st">&quot;Entpd1&quot;</span>,</span>
+<span id="cb7-3"><a href="basic-usage.html#cb7-3" tabindex="-1"></a>            <span class="st">&quot;Pfkp&quot;</span>, <span class="st">&quot;Tpi1&quot;</span>,<span class="st">&quot;Igf1&quot;</span>,<span class="st">&quot;Ddit4&quot;</span>,<span class="st">&quot;Ak9&quot;</span>)</span>
+<span id="cb7-4"><a href="basic-usage.html#cb7-4" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="basic-usage.html#cb7-5" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb7-6"><a href="basic-usage.html#cb7-6" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
+<span id="cb7-7"><a href="basic-usage.html#cb7-7" tabindex="-1"></a>       <span class="at">geneSetID =</span> <span class="st">&#39;GOBP_NUCLEOSIDE_DIPHOSPHATE_METABOLIC_PROCESS&#39;</span>,</span>
+<span id="cb7-8"><a href="basic-usage.html#cb7-8" tabindex="-1"></a>       <span class="at">subPlot =</span> <span class="dv">2</span>,</span>
+<span id="cb7-9"><a href="basic-usage.html#cb7-9" tabindex="-1"></a>       <span class="at">addGene =</span> mygene)</span></code></pre></div>
 <p align="center">
 <img src="local_images/5.png" width="50%">
 </p>
 <p>You can change gene color and arrow type:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="basic-usage.html#cb7-1" tabindex="-1"></a><span class="co"># change gene color and arrow type</span></span>
-<span id="cb7-2"><a href="basic-usage.html#cb7-2" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
-<span id="cb7-3"><a href="basic-usage.html#cb7-3" tabindex="-1"></a>       <span class="at">geneSetID =</span> <span class="st">&#39;GOBP_NUCLEOSIDE_DIPHOSPHATE_METABOLIC_PROCESS&#39;</span>,</span>
-<span id="cb7-4"><a href="basic-usage.html#cb7-4" tabindex="-1"></a>       <span class="at">subPlot =</span> <span class="dv">2</span>,</span>
-<span id="cb7-5"><a href="basic-usage.html#cb7-5" tabindex="-1"></a>       <span class="at">addGene =</span> mygene,</span>
-<span id="cb7-6"><a href="basic-usage.html#cb7-6" tabindex="-1"></a>       <span class="at">arrowType =</span> <span class="st">&#39;open&#39;</span>,</span>
-<span id="cb7-7"><a href="basic-usage.html#cb7-7" tabindex="-1"></a>       <span class="at">geneCol =</span> <span class="st">&#39;black&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="basic-usage.html#cb8-1" tabindex="-1"></a><span class="co"># change gene color and arrow type</span></span>
+<span id="cb8-2"><a href="basic-usage.html#cb8-2" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
+<span id="cb8-3"><a href="basic-usage.html#cb8-3" tabindex="-1"></a>       <span class="at">geneSetID =</span> <span class="st">&#39;GOBP_NUCLEOSIDE_DIPHOSPHATE_METABOLIC_PROCESS&#39;</span>,</span>
+<span id="cb8-4"><a href="basic-usage.html#cb8-4" tabindex="-1"></a>       <span class="at">subPlot =</span> <span class="dv">2</span>,</span>
+<span id="cb8-5"><a href="basic-usage.html#cb8-5" tabindex="-1"></a>       <span class="at">addGene =</span> mygene,</span>
+<span id="cb8-6"><a href="basic-usage.html#cb8-6" tabindex="-1"></a>       <span class="at">arrowType =</span> <span class="st">&#39;open&#39;</span>,</span>
+<span id="cb8-7"><a href="basic-usage.html#cb8-7" tabindex="-1"></a>       <span class="at">geneCol =</span> <span class="st">&#39;black&#39;</span>)</span></code></pre></div>
 <p align="center">
 <img src="local_images/6.png" width="50%">
 </p>
 <p>Whole plot with marked gene:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="basic-usage.html#cb8-1" tabindex="-1"></a><span class="co"># all plot</span></span>
-<span id="cb8-2"><a href="basic-usage.html#cb8-2" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
-<span id="cb8-3"><a href="basic-usage.html#cb8-3" tabindex="-1"></a>       <span class="at">geneSetID =</span> <span class="st">&#39;GOBP_NUCLEOSIDE_DIPHOSPHATE_METABOLIC_PROCESS&#39;</span>,</span>
-<span id="cb8-4"><a href="basic-usage.html#cb8-4" tabindex="-1"></a>       <span class="at">subPlot =</span> <span class="dv">3</span>,</span>
-<span id="cb8-5"><a href="basic-usage.html#cb8-5" tabindex="-1"></a>       <span class="at">addGene =</span> mygene,</span>
-<span id="cb8-6"><a href="basic-usage.html#cb8-6" tabindex="-1"></a>       <span class="at">rmSegment =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="basic-usage.html#cb9-1" tabindex="-1"></a><span class="co"># all plot</span></span>
+<span id="cb9-2"><a href="basic-usage.html#cb9-2" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
+<span id="cb9-3"><a href="basic-usage.html#cb9-3" tabindex="-1"></a>       <span class="at">geneSetID =</span> <span class="st">&#39;GOBP_NUCLEOSIDE_DIPHOSPHATE_METABOLIC_PROCESS&#39;</span>,</span>
+<span id="cb9-4"><a href="basic-usage.html#cb9-4" tabindex="-1"></a>       <span class="at">subPlot =</span> <span class="dv">3</span>,</span>
+<span id="cb9-5"><a href="basic-usage.html#cb9-5" tabindex="-1"></a>       <span class="at">addGene =</span> mygene,</span>
+<span id="cb9-6"><a href="basic-usage.html#cb9-6" tabindex="-1"></a>       <span class="at">rmSegment =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p align="center">
 <img src="local_images/7.png" width="50%">
 </p>
@@ -304,59 +304,59 @@ position they are:</p>
 <div id="new-style-graphic" class="section level2 hasAnchor" number="2.3">
 <h2><span class="header-section-number">2.3</span> New style graphic<a href="basic-usage.html#new-style-graphic" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Here we introduce a new style plot with mergeing gene rank plot into the curve plot:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="basic-usage.html#cb9-1" tabindex="-1"></a><span class="co"># new style GSEA</span></span>
-<span id="cb9-2"><a href="basic-usage.html#cb9-2" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
-<span id="cb9-3"><a href="basic-usage.html#cb9-3" tabindex="-1"></a>       <span class="at">geneSetID =</span> <span class="st">&#39;GOBP_NUCLEOSIDE_DIPHOSPHATE_METABOLIC_PROCESS&#39;</span>,</span>
-<span id="cb9-4"><a href="basic-usage.html#cb9-4" tabindex="-1"></a>       <span class="at">newGsea =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="basic-usage.html#cb10-1" tabindex="-1"></a><span class="co"># new style GSEA</span></span>
+<span id="cb10-2"><a href="basic-usage.html#cb10-2" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
+<span id="cb10-3"><a href="basic-usage.html#cb10-3" tabindex="-1"></a>       <span class="at">geneSetID =</span> <span class="st">&#39;GOBP_NUCLEOSIDE_DIPHOSPHATE_METABOLIC_PROCESS&#39;</span>,</span>
+<span id="cb10-4"><a href="basic-usage.html#cb10-4" tabindex="-1"></a>       <span class="at">newGsea =</span> T)</span></code></pre></div>
 <p align="center">
 <img src="local_images/8.png" width="50%">
 </p>
 <p>Remove the points for each vertical segemnt:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="basic-usage.html#cb10-1" tabindex="-1"></a><span class="co"># new style GSEA remove point</span></span>
-<span id="cb10-2"><a href="basic-usage.html#cb10-2" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
-<span id="cb10-3"><a href="basic-usage.html#cb10-3" tabindex="-1"></a>       <span class="at">geneSetID =</span> <span class="st">&#39;GOBP_NUCLEOSIDE_DIPHOSPHATE_METABOLIC_PROCESS&#39;</span>,</span>
-<span id="cb10-4"><a href="basic-usage.html#cb10-4" tabindex="-1"></a>       <span class="at">newGsea =</span> T,</span>
-<span id="cb10-5"><a href="basic-usage.html#cb10-5" tabindex="-1"></a>       <span class="at">addPoint =</span> F)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="basic-usage.html#cb11-1" tabindex="-1"></a><span class="co"># new style GSEA remove point</span></span>
+<span id="cb11-2"><a href="basic-usage.html#cb11-2" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
+<span id="cb11-3"><a href="basic-usage.html#cb11-3" tabindex="-1"></a>       <span class="at">geneSetID =</span> <span class="st">&#39;GOBP_NUCLEOSIDE_DIPHOSPHATE_METABOLIC_PROCESS&#39;</span>,</span>
+<span id="cb11-4"><a href="basic-usage.html#cb11-4" tabindex="-1"></a>       <span class="at">newGsea =</span> T,</span>
+<span id="cb11-5"><a href="basic-usage.html#cb11-5" tabindex="-1"></a>       <span class="at">addPoint =</span> F)</span></code></pre></div>
 <p align="center">
 <img src="local_images/9.png" width="50%">
 </p>
 <p>Change the heatmap color:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="basic-usage.html#cb11-1" tabindex="-1"></a><span class="co"># change heatmap color</span></span>
-<span id="cb11-2"><a href="basic-usage.html#cb11-2" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
-<span id="cb11-3"><a href="basic-usage.html#cb11-3" tabindex="-1"></a>       <span class="at">geneSetID =</span> <span class="st">&#39;GOBP_NUCLEOSIDE_DIPHOSPHATE_METABOLIC_PROCESS&#39;</span>,</span>
-<span id="cb11-4"><a href="basic-usage.html#cb11-4" tabindex="-1"></a>       <span class="at">newGsea =</span> T,</span>
-<span id="cb11-5"><a href="basic-usage.html#cb11-5" tabindex="-1"></a>       <span class="at">addPoint =</span> F,</span>
-<span id="cb11-6"><a href="basic-usage.html#cb11-6" tabindex="-1"></a>       <span class="at">newHtCol =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;white&quot;</span>, <span class="st">&quot;red&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="basic-usage.html#cb12-1" tabindex="-1"></a><span class="co"># change heatmap color</span></span>
+<span id="cb12-2"><a href="basic-usage.html#cb12-2" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
+<span id="cb12-3"><a href="basic-usage.html#cb12-3" tabindex="-1"></a>       <span class="at">geneSetID =</span> <span class="st">&#39;GOBP_NUCLEOSIDE_DIPHOSPHATE_METABOLIC_PROCESS&#39;</span>,</span>
+<span id="cb12-4"><a href="basic-usage.html#cb12-4" tabindex="-1"></a>       <span class="at">newGsea =</span> T,</span>
+<span id="cb12-5"><a href="basic-usage.html#cb12-5" tabindex="-1"></a>       <span class="at">addPoint =</span> F,</span>
+<span id="cb12-6"><a href="basic-usage.html#cb12-6" tabindex="-1"></a>       <span class="at">newHtCol =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;white&quot;</span>, <span class="st">&quot;red&quot;</span>))</span></code></pre></div>
 <p align="center">
 <img src="local_images/10.png" width="50%">
 </p>
 <p>You can also label your interested gene:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="basic-usage.html#cb12-1" tabindex="-1"></a><span class="co"># new style GSEA with gene name</span></span>
-<span id="cb12-2"><a href="basic-usage.html#cb12-2" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
-<span id="cb12-3"><a href="basic-usage.html#cb12-3" tabindex="-1"></a>       <span class="at">geneSetID =</span> <span class="st">&#39;GOBP_NUCLEOSIDE_DIPHOSPHATE_METABOLIC_PROCESS&#39;</span>,</span>
-<span id="cb12-4"><a href="basic-usage.html#cb12-4" tabindex="-1"></a>       <span class="at">newGsea =</span> T,</span>
-<span id="cb12-5"><a href="basic-usage.html#cb12-5" tabindex="-1"></a>       <span class="at">addGene =</span> mygene)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="basic-usage.html#cb13-1" tabindex="-1"></a><span class="co"># new style GSEA with gene name</span></span>
+<span id="cb13-2"><a href="basic-usage.html#cb13-2" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
+<span id="cb13-3"><a href="basic-usage.html#cb13-3" tabindex="-1"></a>       <span class="at">geneSetID =</span> <span class="st">&#39;GOBP_NUCLEOSIDE_DIPHOSPHATE_METABOLIC_PROCESS&#39;</span>,</span>
+<span id="cb13-4"><a href="basic-usage.html#cb13-4" tabindex="-1"></a>       <span class="at">newGsea =</span> T,</span>
+<span id="cb13-5"><a href="basic-usage.html#cb13-5" tabindex="-1"></a>       <span class="at">addGene =</span> mygene)</span></code></pre></div>
 <p align="center">
 <img src="local_images/11.png" width="50%">
 </p>
 <p>Remove red segemnt:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="basic-usage.html#cb13-1" tabindex="-1"></a><span class="co"># remove red segment</span></span>
-<span id="cb13-2"><a href="basic-usage.html#cb13-2" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
-<span id="cb13-3"><a href="basic-usage.html#cb13-3" tabindex="-1"></a>       <span class="at">geneSetID =</span> <span class="st">&#39;GOBP_NUCLEOSIDE_DIPHOSPHATE_METABOLIC_PROCESS&#39;</span>,</span>
-<span id="cb13-4"><a href="basic-usage.html#cb13-4" tabindex="-1"></a>       <span class="at">newGsea =</span> T,</span>
-<span id="cb13-5"><a href="basic-usage.html#cb13-5" tabindex="-1"></a>       <span class="at">rmSegment =</span> T,</span>
-<span id="cb13-6"><a href="basic-usage.html#cb13-6" tabindex="-1"></a>       <span class="at">addGene =</span> mygene)</span></code></pre></div>
-<p align="center">
-<img src="local_images/12.png" width="50%">
-</p>
-<p>Remove heatmap:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="basic-usage.html#cb14-1" tabindex="-1"></a><span class="co"># remove heatmap</span></span>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="basic-usage.html#cb14-1" tabindex="-1"></a><span class="co"># remove red segment</span></span>
 <span id="cb14-2"><a href="basic-usage.html#cb14-2" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
 <span id="cb14-3"><a href="basic-usage.html#cb14-3" tabindex="-1"></a>       <span class="at">geneSetID =</span> <span class="st">&#39;GOBP_NUCLEOSIDE_DIPHOSPHATE_METABOLIC_PROCESS&#39;</span>,</span>
 <span id="cb14-4"><a href="basic-usage.html#cb14-4" tabindex="-1"></a>       <span class="at">newGsea =</span> T,</span>
 <span id="cb14-5"><a href="basic-usage.html#cb14-5" tabindex="-1"></a>       <span class="at">rmSegment =</span> T,</span>
-<span id="cb14-6"><a href="basic-usage.html#cb14-6" tabindex="-1"></a>       <span class="at">rmHt =</span> T,</span>
-<span id="cb14-7"><a href="basic-usage.html#cb14-7" tabindex="-1"></a>       <span class="at">addGene =</span> mygene)</span></code></pre></div>
+<span id="cb14-6"><a href="basic-usage.html#cb14-6" tabindex="-1"></a>       <span class="at">addGene =</span> mygene)</span></code></pre></div>
+<p align="center">
+<img src="local_images/12.png" width="50%">
+</p>
+<p>Remove heatmap:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="basic-usage.html#cb15-1" tabindex="-1"></a><span class="co"># remove heatmap</span></span>
+<span id="cb15-2"><a href="basic-usage.html#cb15-2" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
+<span id="cb15-3"><a href="basic-usage.html#cb15-3" tabindex="-1"></a>       <span class="at">geneSetID =</span> <span class="st">&#39;GOBP_NUCLEOSIDE_DIPHOSPHATE_METABOLIC_PROCESS&#39;</span>,</span>
+<span id="cb15-4"><a href="basic-usage.html#cb15-4" tabindex="-1"></a>       <span class="at">newGsea =</span> T,</span>
+<span id="cb15-5"><a href="basic-usage.html#cb15-5" tabindex="-1"></a>       <span class="at">rmSegment =</span> T,</span>
+<span id="cb15-6"><a href="basic-usage.html#cb15-6" tabindex="-1"></a>       <span class="at">rmHt =</span> T,</span>
+<span id="cb15-7"><a href="basic-usage.html#cb15-7" tabindex="-1"></a>       <span class="at">addGene =</span> mygene)</span></code></pre></div>
 <p align="center">
 <img src="local_images/13.png" width="50%">
 </p>
@@ -364,37 +364,37 @@ position they are:</p>
 <div id="add-nes-and-pvalue" class="section level2 hasAnchor" number="2.4">
 <h2><span class="header-section-number">2.4</span> Add NES and Pvalue<a href="basic-usage.html#add-nes-and-pvalue" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Sometimes you need to add NES score and Pvalue to interpret the term’s significance:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="basic-usage.html#cb15-1" tabindex="-1"></a><span class="co"># add pvalue and NES</span></span>
-<span id="cb15-2"><a href="basic-usage.html#cb15-2" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
-<span id="cb15-3"><a href="basic-usage.html#cb15-3" tabindex="-1"></a>       <span class="at">geneSetID =</span> <span class="st">&#39;GOBP_NUCLEOSIDE_DIPHOSPHATE_METABOLIC_PROCESS&#39;</span>,</span>
-<span id="cb15-4"><a href="basic-usage.html#cb15-4" tabindex="-1"></a>       <span class="at">newGsea =</span> T,</span>
-<span id="cb15-5"><a href="basic-usage.html#cb15-5" tabindex="-1"></a>       <span class="at">addGene =</span> mygene,</span>
-<span id="cb15-6"><a href="basic-usage.html#cb15-6" tabindex="-1"></a>       <span class="at">addPval =</span> T)</span></code></pre></div>
-<p align="center">
-<img src="local_images/14.png" width="50%">
-</p>
-<p>Adjust the relative position:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="basic-usage.html#cb16-1" tabindex="-1"></a><span class="co"># control label ajustment</span></span>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="basic-usage.html#cb16-1" tabindex="-1"></a><span class="co"># add pvalue and NES</span></span>
 <span id="cb16-2"><a href="basic-usage.html#cb16-2" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
 <span id="cb16-3"><a href="basic-usage.html#cb16-3" tabindex="-1"></a>       <span class="at">geneSetID =</span> <span class="st">&#39;GOBP_NUCLEOSIDE_DIPHOSPHATE_METABOLIC_PROCESS&#39;</span>,</span>
 <span id="cb16-4"><a href="basic-usage.html#cb16-4" tabindex="-1"></a>       <span class="at">newGsea =</span> T,</span>
 <span id="cb16-5"><a href="basic-usage.html#cb16-5" tabindex="-1"></a>       <span class="at">addGene =</span> mygene,</span>
-<span id="cb16-6"><a href="basic-usage.html#cb16-6" tabindex="-1"></a>       <span class="at">addPval =</span> T,</span>
-<span id="cb16-7"><a href="basic-usage.html#cb16-7" tabindex="-1"></a>       <span class="at">pvalX =</span> <span class="fl">0.75</span>,<span class="at">pvalY =</span> <span class="fl">0.8</span>,</span>
-<span id="cb16-8"><a href="basic-usage.html#cb16-8" tabindex="-1"></a>       <span class="at">pCol =</span> <span class="st">&#39;black&#39;</span>,</span>
-<span id="cb16-9"><a href="basic-usage.html#cb16-9" tabindex="-1"></a>       <span class="at">pHjust =</span> <span class="dv">0</span>)</span></code></pre></div>
+<span id="cb16-6"><a href="basic-usage.html#cb16-6" tabindex="-1"></a>       <span class="at">addPval =</span> T)</span></code></pre></div>
+<p align="center">
+<img src="local_images/14.png" width="50%">
+</p>
+<p>Adjust the relative position:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="basic-usage.html#cb17-1" tabindex="-1"></a><span class="co"># control label ajustment</span></span>
+<span id="cb17-2"><a href="basic-usage.html#cb17-2" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
+<span id="cb17-3"><a href="basic-usage.html#cb17-3" tabindex="-1"></a>       <span class="at">geneSetID =</span> <span class="st">&#39;GOBP_NUCLEOSIDE_DIPHOSPHATE_METABOLIC_PROCESS&#39;</span>,</span>
+<span id="cb17-4"><a href="basic-usage.html#cb17-4" tabindex="-1"></a>       <span class="at">newGsea =</span> T,</span>
+<span id="cb17-5"><a href="basic-usage.html#cb17-5" tabindex="-1"></a>       <span class="at">addGene =</span> mygene,</span>
+<span id="cb17-6"><a href="basic-usage.html#cb17-6" tabindex="-1"></a>       <span class="at">addPval =</span> T,</span>
+<span id="cb17-7"><a href="basic-usage.html#cb17-7" tabindex="-1"></a>       <span class="at">pvalX =</span> <span class="fl">0.75</span>,<span class="at">pvalY =</span> <span class="fl">0.8</span>,</span>
+<span id="cb17-8"><a href="basic-usage.html#cb17-8" tabindex="-1"></a>       <span class="at">pCol =</span> <span class="st">&#39;black&#39;</span>,</span>
+<span id="cb17-9"><a href="basic-usage.html#cb17-9" tabindex="-1"></a>       <span class="at">pHjust =</span> <span class="dv">0</span>)</span></code></pre></div>
 <p align="center">
 <img src="local_images/15.png" width="50%">
 </p>
 <p>The classic plot with NES and pvalue annotation:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="basic-usage.html#cb17-1" tabindex="-1"></a><span class="co"># clsaasic with pvalue</span></span>
-<span id="cb17-2"><a href="basic-usage.html#cb17-2" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
-<span id="cb17-3"><a href="basic-usage.html#cb17-3" tabindex="-1"></a>       <span class="at">geneSetID =</span> <span class="st">&#39;GOBP_NUCLEOSIDE_DIPHOSPHATE_METABOLIC_PROCESS&#39;</span>,</span>
-<span id="cb17-4"><a href="basic-usage.html#cb17-4" tabindex="-1"></a>       <span class="at">addGene =</span> mygene,</span>
-<span id="cb17-5"><a href="basic-usage.html#cb17-5" tabindex="-1"></a>       <span class="at">addPval =</span> T,</span>
-<span id="cb17-6"><a href="basic-usage.html#cb17-6" tabindex="-1"></a>       <span class="at">pvalX =</span> <span class="fl">0.75</span>,<span class="at">pvalY =</span> <span class="fl">0.8</span>,</span>
-<span id="cb17-7"><a href="basic-usage.html#cb17-7" tabindex="-1"></a>       <span class="at">pCol =</span> <span class="st">&#39;black&#39;</span>,</span>
-<span id="cb17-8"><a href="basic-usage.html#cb17-8" tabindex="-1"></a>       <span class="at">pHjust =</span> <span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="basic-usage.html#cb18-1" tabindex="-1"></a><span class="co"># clsaasic with pvalue</span></span>
+<span id="cb18-2"><a href="basic-usage.html#cb18-2" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
+<span id="cb18-3"><a href="basic-usage.html#cb18-3" tabindex="-1"></a>       <span class="at">geneSetID =</span> <span class="st">&#39;GOBP_NUCLEOSIDE_DIPHOSPHATE_METABOLIC_PROCESS&#39;</span>,</span>
+<span id="cb18-4"><a href="basic-usage.html#cb18-4" tabindex="-1"></a>       <span class="at">addGene =</span> mygene,</span>
+<span id="cb18-5"><a href="basic-usage.html#cb18-5" tabindex="-1"></a>       <span class="at">addPval =</span> T,</span>
+<span id="cb18-6"><a href="basic-usage.html#cb18-6" tabindex="-1"></a>       <span class="at">pvalX =</span> <span class="fl">0.75</span>,<span class="at">pvalY =</span> <span class="fl">0.8</span>,</span>
+<span id="cb18-7"><a href="basic-usage.html#cb18-7" tabindex="-1"></a>       <span class="at">pCol =</span> <span class="st">&#39;black&#39;</span>,</span>
+<span id="cb18-8"><a href="basic-usage.html#cb18-8" tabindex="-1"></a>       <span class="at">pHjust =</span> <span class="dv">0</span>)</span></code></pre></div>
 <p align="center">
 <img src="local_images/16.png" width="50%">
 </p>
@@ -402,188 +402,188 @@ position they are:</p>
 <div id="multiple-terms-gsea-plot" class="section level2 hasAnchor" number="2.5">
 <h2><span class="header-section-number">2.5</span> Multiple terms GSEA plot<a href="basic-usage.html#multiple-terms-gsea-plot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Multiple terms can be drawn in a single plot or using a for loop.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="basic-usage.html#cb18-1" tabindex="-1"></a><span class="co"># bacth plot</span></span>
-<span id="cb18-2"><a href="basic-usage.html#cb18-2" tabindex="-1"></a>terms <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;GOBP_NUCLEOSIDE_DIPHOSPHATE_METABOLIC_PROCESS&#39;</span>,</span>
-<span id="cb18-3"><a href="basic-usage.html#cb18-3" tabindex="-1"></a>           <span class="st">&#39;GOBP_REGULATION_OF_OSSIFICATION&#39;</span>,</span>
-<span id="cb18-4"><a href="basic-usage.html#cb18-4" tabindex="-1"></a>           <span class="st">&#39;GOBP_TISSUE_MIGRATION&#39;</span>,</span>
-<span id="cb18-5"><a href="basic-usage.html#cb18-5" tabindex="-1"></a>           <span class="st">&#39;GOBP_CELL_MATRIX_ADHESION&#39;</span>)</span>
-<span id="cb18-6"><a href="basic-usage.html#cb18-6" tabindex="-1"></a></span>
-<span id="cb18-7"><a href="basic-usage.html#cb18-7" tabindex="-1"></a><span class="co"># plot</span></span>
-<span id="cb18-8"><a href="basic-usage.html#cb18-8" tabindex="-1"></a><span class="fu">lapply</span>(terms, <span class="cf">function</span>(x){</span>
-<span id="cb18-9"><a href="basic-usage.html#cb18-9" tabindex="-1"></a>  <span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
-<span id="cb18-10"><a href="basic-usage.html#cb18-10" tabindex="-1"></a>         <span class="at">geneSetID =</span> x,</span>
-<span id="cb18-11"><a href="basic-usage.html#cb18-11" tabindex="-1"></a>         <span class="at">addPval =</span> T,</span>
-<span id="cb18-12"><a href="basic-usage.html#cb18-12" tabindex="-1"></a>         <span class="at">pvalX =</span> <span class="fl">0.75</span>,<span class="at">pvalY =</span> <span class="fl">0.75</span>,</span>
-<span id="cb18-13"><a href="basic-usage.html#cb18-13" tabindex="-1"></a>         <span class="at">pCol =</span> <span class="st">&#39;black&#39;</span>,</span>
-<span id="cb18-14"><a href="basic-usage.html#cb18-14" tabindex="-1"></a>         <span class="at">pHjust =</span> <span class="dv">0</span>)</span>
-<span id="cb18-15"><a href="basic-usage.html#cb18-15" tabindex="-1"></a>}) <span class="ot">-&gt;</span> gseaList</span>
-<span id="cb18-16"><a href="basic-usage.html#cb18-16" tabindex="-1"></a></span>
-<span id="cb18-17"><a href="basic-usage.html#cb18-17" tabindex="-1"></a><span class="co"># combine</span></span>
-<span id="cb18-18"><a href="basic-usage.html#cb18-18" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(<span class="at">plotlist =</span> gseaList,<span class="at">ncol =</span> <span class="dv">2</span>,<span class="at">align =</span> <span class="st">&#39;hv&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="basic-usage.html#cb19-1" tabindex="-1"></a><span class="co"># bacth plot</span></span>
+<span id="cb19-2"><a href="basic-usage.html#cb19-2" tabindex="-1"></a>terms <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;GOBP_NUCLEOSIDE_DIPHOSPHATE_METABOLIC_PROCESS&#39;</span>,</span>
+<span id="cb19-3"><a href="basic-usage.html#cb19-3" tabindex="-1"></a>           <span class="st">&#39;GOBP_REGULATION_OF_OSSIFICATION&#39;</span>,</span>
+<span id="cb19-4"><a href="basic-usage.html#cb19-4" tabindex="-1"></a>           <span class="st">&#39;GOBP_TISSUE_MIGRATION&#39;</span>,</span>
+<span id="cb19-5"><a href="basic-usage.html#cb19-5" tabindex="-1"></a>           <span class="st">&#39;GOBP_CELL_MATRIX_ADHESION&#39;</span>)</span>
+<span id="cb19-6"><a href="basic-usage.html#cb19-6" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="basic-usage.html#cb19-7" tabindex="-1"></a><span class="co"># plot</span></span>
+<span id="cb19-8"><a href="basic-usage.html#cb19-8" tabindex="-1"></a><span class="fu">lapply</span>(terms, <span class="cf">function</span>(x){</span>
+<span id="cb19-9"><a href="basic-usage.html#cb19-9" tabindex="-1"></a>  <span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
+<span id="cb19-10"><a href="basic-usage.html#cb19-10" tabindex="-1"></a>         <span class="at">geneSetID =</span> x,</span>
+<span id="cb19-11"><a href="basic-usage.html#cb19-11" tabindex="-1"></a>         <span class="at">addPval =</span> T,</span>
+<span id="cb19-12"><a href="basic-usage.html#cb19-12" tabindex="-1"></a>         <span class="at">pvalX =</span> <span class="fl">0.75</span>,<span class="at">pvalY =</span> <span class="fl">0.75</span>,</span>
+<span id="cb19-13"><a href="basic-usage.html#cb19-13" tabindex="-1"></a>         <span class="at">pCol =</span> <span class="st">&#39;black&#39;</span>,</span>
+<span id="cb19-14"><a href="basic-usage.html#cb19-14" tabindex="-1"></a>         <span class="at">pHjust =</span> <span class="dv">0</span>)</span>
+<span id="cb19-15"><a href="basic-usage.html#cb19-15" tabindex="-1"></a>}) <span class="ot">-&gt;</span> gseaList</span>
+<span id="cb19-16"><a href="basic-usage.html#cb19-16" tabindex="-1"></a></span>
+<span id="cb19-17"><a href="basic-usage.html#cb19-17" tabindex="-1"></a><span class="co"># combine</span></span>
+<span id="cb19-18"><a href="basic-usage.html#cb19-18" tabindex="-1"></a>cowplot<span class="sc">::</span><span class="fu">plot_grid</span>(<span class="at">plotlist =</span> gseaList,<span class="at">ncol =</span> <span class="dv">2</span>,<span class="at">align =</span> <span class="st">&#39;hv&#39;</span>)</span></code></pre></div>
 <p align="center">
 <img src="local_images/17.png" width="90%">
 </p>
 <p>Combine into a single plot:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="basic-usage.html#cb19-1" tabindex="-1"></a>geneSetID <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;GOBP_NUCLEOSIDE_DIPHOSPHATE_METABOLIC_PROCESS&#39;</span>,</span>
-<span id="cb19-2"><a href="basic-usage.html#cb19-2" tabindex="-1"></a>              <span class="st">&#39;GOBP_REGULATION_OF_OSSIFICATION&#39;</span>,</span>
-<span id="cb19-3"><a href="basic-usage.html#cb19-3" tabindex="-1"></a>              <span class="st">&#39;GOBP_TISSUE_MIGRATION&#39;</span>)</span>
-<span id="cb19-4"><a href="basic-usage.html#cb19-4" tabindex="-1"></a></span>
-<span id="cb19-5"><a href="basic-usage.html#cb19-5" tabindex="-1"></a><span class="co"># all plot</span></span>
-<span id="cb19-6"><a href="basic-usage.html#cb19-6" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
-<span id="cb19-7"><a href="basic-usage.html#cb19-7" tabindex="-1"></a>       <span class="at">geneSetID =</span> geneSetID)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="basic-usage.html#cb20-1" tabindex="-1"></a>geneSetID <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;GOBP_NUCLEOSIDE_DIPHOSPHATE_METABOLIC_PROCESS&#39;</span>,</span>
+<span id="cb20-2"><a href="basic-usage.html#cb20-2" tabindex="-1"></a>              <span class="st">&#39;GOBP_REGULATION_OF_OSSIFICATION&#39;</span>,</span>
+<span id="cb20-3"><a href="basic-usage.html#cb20-3" tabindex="-1"></a>              <span class="st">&#39;GOBP_TISSUE_MIGRATION&#39;</span>)</span>
+<span id="cb20-4"><a href="basic-usage.html#cb20-4" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="basic-usage.html#cb20-5" tabindex="-1"></a><span class="co"># all plot</span></span>
+<span id="cb20-6"><a href="basic-usage.html#cb20-6" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
+<span id="cb20-7"><a href="basic-usage.html#cb20-7" tabindex="-1"></a>       <span class="at">geneSetID =</span> geneSetID)</span></code></pre></div>
 <p align="center">
 <img src="local_images/18.png" width="80%">
 </p>
 <p>Retain curve and heatmap:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="basic-usage.html#cb20-1" tabindex="-1"></a><span class="co"># sub plot</span></span>
-<span id="cb20-2"><a href="basic-usage.html#cb20-2" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
-<span id="cb20-3"><a href="basic-usage.html#cb20-3" tabindex="-1"></a>       <span class="at">geneSetID =</span> geneSetID,</span>
-<span id="cb20-4"><a href="basic-usage.html#cb20-4" tabindex="-1"></a>       <span class="at">subPlot =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="basic-usage.html#cb21-1" tabindex="-1"></a><span class="co"># sub plot</span></span>
+<span id="cb21-2"><a href="basic-usage.html#cb21-2" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
+<span id="cb21-3"><a href="basic-usage.html#cb21-3" tabindex="-1"></a>       <span class="at">geneSetID =</span> geneSetID,</span>
+<span id="cb21-4"><a href="basic-usage.html#cb21-4" tabindex="-1"></a>       <span class="at">subPlot =</span> <span class="dv">2</span>)</span></code></pre></div>
 <p align="center">
 <img src="local_images/19.png" width="80%">
 </p>
 <p>Remove heatmap:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="basic-usage.html#cb21-1" tabindex="-1"></a><span class="co"># remove heatbar</span></span>
-<span id="cb21-2"><a href="basic-usage.html#cb21-2" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
-<span id="cb21-3"><a href="basic-usage.html#cb21-3" tabindex="-1"></a>       <span class="at">geneSetID =</span> geneSetID,</span>
-<span id="cb21-4"><a href="basic-usage.html#cb21-4" tabindex="-1"></a>       <span class="at">subPlot =</span> <span class="dv">2</span>,</span>
-<span id="cb21-5"><a href="basic-usage.html#cb21-5" tabindex="-1"></a>       <span class="at">rmHt =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="basic-usage.html#cb22-1" tabindex="-1"></a><span class="co"># remove heatbar</span></span>
+<span id="cb22-2"><a href="basic-usage.html#cb22-2" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
+<span id="cb22-3"><a href="basic-usage.html#cb22-3" tabindex="-1"></a>       <span class="at">geneSetID =</span> geneSetID,</span>
+<span id="cb22-4"><a href="basic-usage.html#cb22-4" tabindex="-1"></a>       <span class="at">subPlot =</span> <span class="dv">2</span>,</span>
+<span id="cb22-5"><a href="basic-usage.html#cb22-5" tabindex="-1"></a>       <span class="at">rmHt =</span> T)</span></code></pre></div>
 <p align="center">
 <img src="local_images/20.png" width="80%">
 </p>
 <p>Wrap term name and adjust legend position:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="basic-usage.html#cb22-1" tabindex="-1"></a><span class="co"># wrap term name and adjust position</span></span>
-<span id="cb22-2"><a href="basic-usage.html#cb22-2" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
-<span id="cb22-3"><a href="basic-usage.html#cb22-3" tabindex="-1"></a>       <span class="at">geneSetID =</span> geneSetID,</span>
-<span id="cb22-4"><a href="basic-usage.html#cb22-4" tabindex="-1"></a>       <span class="at">subPlot =</span> <span class="dv">2</span>,</span>
-<span id="cb22-5"><a href="basic-usage.html#cb22-5" tabindex="-1"></a>       <span class="at">termWidth =</span> <span class="dv">35</span>,</span>
-<span id="cb22-6"><a href="basic-usage.html#cb22-6" tabindex="-1"></a>       <span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.5</span>,<span class="fl">0.7</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="basic-usage.html#cb23-1" tabindex="-1"></a><span class="co"># wrap term name and adjust position</span></span>
+<span id="cb23-2"><a href="basic-usage.html#cb23-2" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
+<span id="cb23-3"><a href="basic-usage.html#cb23-3" tabindex="-1"></a>       <span class="at">geneSetID =</span> geneSetID,</span>
+<span id="cb23-4"><a href="basic-usage.html#cb23-4" tabindex="-1"></a>       <span class="at">subPlot =</span> <span class="dv">2</span>,</span>
+<span id="cb23-5"><a href="basic-usage.html#cb23-5" tabindex="-1"></a>       <span class="at">termWidth =</span> <span class="dv">35</span>,</span>
+<span id="cb23-6"><a href="basic-usage.html#cb23-6" tabindex="-1"></a>       <span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.5</span>,<span class="fl">0.7</span>))</span></code></pre></div>
 <p align="center">
 <img src="local_images/21.png" width="50%">
 </p>
 <p>Add gene names:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="basic-usage.html#cb23-1" tabindex="-1"></a><span class="co"># add gene name</span></span>
-<span id="cb23-2"><a href="basic-usage.html#cb23-2" tabindex="-1"></a>gene <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Entpd8&quot;</span>,<span class="st">&quot;Htr2a&quot;</span>,<span class="st">&quot;Nt5e&quot;</span>,<span class="st">&quot;Actn3&quot;</span>,<span class="st">&quot;Entpd1&quot;</span>,</span>
-<span id="cb23-3"><a href="basic-usage.html#cb23-3" tabindex="-1"></a>          <span class="st">&quot;Pfkp&quot;</span>, <span class="st">&quot;Tpi1&quot;</span>,<span class="st">&quot;Igf1&quot;</span>,<span class="st">&quot;Ddit4&quot;</span>,<span class="st">&quot;Ak9&quot;</span>)</span>
-<span id="cb23-4"><a href="basic-usage.html#cb23-4" tabindex="-1"></a></span>
-<span id="cb23-5"><a href="basic-usage.html#cb23-5" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
-<span id="cb23-6"><a href="basic-usage.html#cb23-6" tabindex="-1"></a>       <span class="at">geneSetID =</span> geneSetID,</span>
-<span id="cb23-7"><a href="basic-usage.html#cb23-7" tabindex="-1"></a>       <span class="at">subPlot =</span> <span class="dv">2</span>,</span>
-<span id="cb23-8"><a href="basic-usage.html#cb23-8" tabindex="-1"></a>       <span class="at">termWidth =</span> <span class="dv">35</span>,</span>
-<span id="cb23-9"><a href="basic-usage.html#cb23-9" tabindex="-1"></a>       <span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.8</span>,<span class="fl">0.8</span>),</span>
-<span id="cb23-10"><a href="basic-usage.html#cb23-10" tabindex="-1"></a>       <span class="at">addGene =</span> gene)</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="basic-usage.html#cb24-1" tabindex="-1"></a><span class="co"># add gene name</span></span>
+<span id="cb24-2"><a href="basic-usage.html#cb24-2" tabindex="-1"></a>gene <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Entpd8&quot;</span>,<span class="st">&quot;Htr2a&quot;</span>,<span class="st">&quot;Nt5e&quot;</span>,<span class="st">&quot;Actn3&quot;</span>,<span class="st">&quot;Entpd1&quot;</span>,</span>
+<span id="cb24-3"><a href="basic-usage.html#cb24-3" tabindex="-1"></a>          <span class="st">&quot;Pfkp&quot;</span>, <span class="st">&quot;Tpi1&quot;</span>,<span class="st">&quot;Igf1&quot;</span>,<span class="st">&quot;Ddit4&quot;</span>,<span class="st">&quot;Ak9&quot;</span>)</span>
+<span id="cb24-4"><a href="basic-usage.html#cb24-4" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="basic-usage.html#cb24-5" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
+<span id="cb24-6"><a href="basic-usage.html#cb24-6" tabindex="-1"></a>       <span class="at">geneSetID =</span> geneSetID,</span>
+<span id="cb24-7"><a href="basic-usage.html#cb24-7" tabindex="-1"></a>       <span class="at">subPlot =</span> <span class="dv">2</span>,</span>
+<span id="cb24-8"><a href="basic-usage.html#cb24-8" tabindex="-1"></a>       <span class="at">termWidth =</span> <span class="dv">35</span>,</span>
+<span id="cb24-9"><a href="basic-usage.html#cb24-9" tabindex="-1"></a>       <span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.8</span>,<span class="fl">0.8</span>),</span>
+<span id="cb24-10"><a href="basic-usage.html#cb24-10" tabindex="-1"></a>       <span class="at">addGene =</span> gene)</span></code></pre></div>
 <p align="center">
 <img src="local_images/22.png" width="50%">
 </p>
 <p>Add NES and pvalue:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="basic-usage.html#cb24-1" tabindex="-1"></a><span class="co"># add NES and Pvalue</span></span>
-<span id="cb24-2"><a href="basic-usage.html#cb24-2" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
-<span id="cb24-3"><a href="basic-usage.html#cb24-3" tabindex="-1"></a>       <span class="at">geneSetID =</span> geneSetID,</span>
-<span id="cb24-4"><a href="basic-usage.html#cb24-4" tabindex="-1"></a>       <span class="at">subPlot =</span> <span class="dv">2</span>,</span>
-<span id="cb24-5"><a href="basic-usage.html#cb24-5" tabindex="-1"></a>       <span class="at">termWidth =</span> <span class="dv">35</span>,</span>
-<span id="cb24-6"><a href="basic-usage.html#cb24-6" tabindex="-1"></a>       <span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.8</span>,<span class="fl">0.8</span>),</span>
-<span id="cb24-7"><a href="basic-usage.html#cb24-7" tabindex="-1"></a>       <span class="at">addGene =</span> gene,</span>
-<span id="cb24-8"><a href="basic-usage.html#cb24-8" tabindex="-1"></a>       <span class="at">addPval =</span> T,</span>
-<span id="cb24-9"><a href="basic-usage.html#cb24-9" tabindex="-1"></a>       <span class="at">pvalX =</span> <span class="fl">0.05</span>,<span class="at">pvalY =</span> <span class="fl">0.05</span>)</span></code></pre></div>
-<p align="center">
-<img src="local_images/23.png" width="50%">
-</p>
-<p>Change color:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="basic-usage.html#cb25-1" tabindex="-1"></a><span class="co"># change line color</span></span>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="basic-usage.html#cb25-1" tabindex="-1"></a><span class="co"># add NES and Pvalue</span></span>
 <span id="cb25-2"><a href="basic-usage.html#cb25-2" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
 <span id="cb25-3"><a href="basic-usage.html#cb25-3" tabindex="-1"></a>       <span class="at">geneSetID =</span> geneSetID,</span>
 <span id="cb25-4"><a href="basic-usage.html#cb25-4" tabindex="-1"></a>       <span class="at">subPlot =</span> <span class="dv">2</span>,</span>
 <span id="cb25-5"><a href="basic-usage.html#cb25-5" tabindex="-1"></a>       <span class="at">termWidth =</span> <span class="dv">35</span>,</span>
-<span id="cb25-6"><a href="basic-usage.html#cb25-6" tabindex="-1"></a>       <span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.65</span>,<span class="fl">0.8</span>),</span>
+<span id="cb25-6"><a href="basic-usage.html#cb25-6" tabindex="-1"></a>       <span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.8</span>,<span class="fl">0.8</span>),</span>
 <span id="cb25-7"><a href="basic-usage.html#cb25-7" tabindex="-1"></a>       <span class="at">addGene =</span> gene,</span>
 <span id="cb25-8"><a href="basic-usage.html#cb25-8" tabindex="-1"></a>       <span class="at">addPval =</span> T,</span>
-<span id="cb25-9"><a href="basic-usage.html#cb25-9" tabindex="-1"></a>       <span class="at">pvalX =</span> <span class="fl">0.05</span>,<span class="at">pvalY =</span> <span class="fl">0.05</span>,</span>
-<span id="cb25-10"><a href="basic-usage.html#cb25-10" tabindex="-1"></a>       <span class="at">curveCol =</span> jjAnno<span class="sc">::</span><span class="fu">useMyCol</span>(<span class="st">&#39;paired&#39;</span>,<span class="dv">3</span>))</span></code></pre></div>
+<span id="cb25-9"><a href="basic-usage.html#cb25-9" tabindex="-1"></a>       <span class="at">pvalX =</span> <span class="fl">0.05</span>,<span class="at">pvalY =</span> <span class="fl">0.05</span>)</span></code></pre></div>
+<p align="center">
+<img src="local_images/23.png" width="50%">
+</p>
+<p>Change color:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="basic-usage.html#cb26-1" tabindex="-1"></a><span class="co"># change line color</span></span>
+<span id="cb26-2"><a href="basic-usage.html#cb26-2" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
+<span id="cb26-3"><a href="basic-usage.html#cb26-3" tabindex="-1"></a>       <span class="at">geneSetID =</span> geneSetID,</span>
+<span id="cb26-4"><a href="basic-usage.html#cb26-4" tabindex="-1"></a>       <span class="at">subPlot =</span> <span class="dv">2</span>,</span>
+<span id="cb26-5"><a href="basic-usage.html#cb26-5" tabindex="-1"></a>       <span class="at">termWidth =</span> <span class="dv">35</span>,</span>
+<span id="cb26-6"><a href="basic-usage.html#cb26-6" tabindex="-1"></a>       <span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.65</span>,<span class="fl">0.8</span>),</span>
+<span id="cb26-7"><a href="basic-usage.html#cb26-7" tabindex="-1"></a>       <span class="at">addGene =</span> gene,</span>
+<span id="cb26-8"><a href="basic-usage.html#cb26-8" tabindex="-1"></a>       <span class="at">addPval =</span> T,</span>
+<span id="cb26-9"><a href="basic-usage.html#cb26-9" tabindex="-1"></a>       <span class="at">pvalX =</span> <span class="fl">0.05</span>,<span class="at">pvalY =</span> <span class="fl">0.05</span>,</span>
+<span id="cb26-10"><a href="basic-usage.html#cb26-10" tabindex="-1"></a>       <span class="at">curveCol =</span> jjAnno<span class="sc">::</span><span class="fu">useMyCol</span>(<span class="st">&#39;paired&#39;</span>,<span class="dv">3</span>))</span></code></pre></div>
 <p align="center">
 <img src="local_images/24.png" width="50%">
 </p>
 <p>A facet style plot:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="basic-usage.html#cb26-1" tabindex="-1"></a><span class="co"># load data</span></span>
-<span id="cb26-2"><a href="basic-usage.html#cb26-2" tabindex="-1"></a>test_data <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;gseaRes.RDS&quot;</span>, <span class="at">package =</span> <span class="st">&quot;GseaVis&quot;</span>)</span>
-<span id="cb26-3"><a href="basic-usage.html#cb26-3" tabindex="-1"></a>gseaRes <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(test_data)</span>
-<span id="cb26-4"><a href="basic-usage.html#cb26-4" tabindex="-1"></a></span>
-<span id="cb26-5"><a href="basic-usage.html#cb26-5" tabindex="-1"></a>setid <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;GOBP_REGULATION_OF_OSTEOCLAST_DIFFERENTIATION&quot;</span>,</span>
-<span id="cb26-6"><a href="basic-usage.html#cb26-6" tabindex="-1"></a>           <span class="st">&quot;GOBP_NEGATIVE_REGULATION_OF_MYELOID_CELL_DIFFERENTIATION&quot;</span>,</span>
-<span id="cb26-7"><a href="basic-usage.html#cb26-7" tabindex="-1"></a>           <span class="st">&quot;GOBP_REGULATION_OF_NEURON_MIGRATION&quot;</span>,</span>
-<span id="cb26-8"><a href="basic-usage.html#cb26-8" tabindex="-1"></a>           <span class="st">&quot;GOBP_POSITIVE_REGULATION_OF_TYPE_I_INTERFERON_PRODUCTION&quot;</span>,</span>
-<span id="cb26-9"><a href="basic-usage.html#cb26-9" tabindex="-1"></a>           <span class="st">&quot;GOBP_POLYSACCHARIDE_BIOSYNTHETIC_PROCESS&quot;</span>)</span>
-<span id="cb26-10"><a href="basic-usage.html#cb26-10" tabindex="-1"></a></span>
-<span id="cb26-11"><a href="basic-usage.html#cb26-11" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
-<span id="cb26-12"><a href="basic-usage.html#cb26-12" tabindex="-1"></a>       <span class="at">geneSetID =</span> setid,</span>
-<span id="cb26-13"><a href="basic-usage.html#cb26-13" tabindex="-1"></a>       <span class="at">newGsea =</span> T,</span>
-<span id="cb26-14"><a href="basic-usage.html#cb26-14" tabindex="-1"></a>       <span class="at">rmHt =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="basic-usage.html#cb27-1" tabindex="-1"></a><span class="co"># load data</span></span>
+<span id="cb27-2"><a href="basic-usage.html#cb27-2" tabindex="-1"></a>test_data <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;gseaRes.RDS&quot;</span>, <span class="at">package =</span> <span class="st">&quot;GseaVis&quot;</span>)</span>
+<span id="cb27-3"><a href="basic-usage.html#cb27-3" tabindex="-1"></a>gseaRes <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(test_data)</span>
+<span id="cb27-4"><a href="basic-usage.html#cb27-4" tabindex="-1"></a></span>
+<span id="cb27-5"><a href="basic-usage.html#cb27-5" tabindex="-1"></a>setid <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;GOBP_REGULATION_OF_OSTEOCLAST_DIFFERENTIATION&quot;</span>,</span>
+<span id="cb27-6"><a href="basic-usage.html#cb27-6" tabindex="-1"></a>           <span class="st">&quot;GOBP_NEGATIVE_REGULATION_OF_MYELOID_CELL_DIFFERENTIATION&quot;</span>,</span>
+<span id="cb27-7"><a href="basic-usage.html#cb27-7" tabindex="-1"></a>           <span class="st">&quot;GOBP_REGULATION_OF_NEURON_MIGRATION&quot;</span>,</span>
+<span id="cb27-8"><a href="basic-usage.html#cb27-8" tabindex="-1"></a>           <span class="st">&quot;GOBP_POSITIVE_REGULATION_OF_TYPE_I_INTERFERON_PRODUCTION&quot;</span>,</span>
+<span id="cb27-9"><a href="basic-usage.html#cb27-9" tabindex="-1"></a>           <span class="st">&quot;GOBP_POLYSACCHARIDE_BIOSYNTHETIC_PROCESS&quot;</span>)</span>
+<span id="cb27-10"><a href="basic-usage.html#cb27-10" tabindex="-1"></a></span>
+<span id="cb27-11"><a href="basic-usage.html#cb27-11" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
+<span id="cb27-12"><a href="basic-usage.html#cb27-12" tabindex="-1"></a>       <span class="at">geneSetID =</span> setid,</span>
+<span id="cb27-13"><a href="basic-usage.html#cb27-13" tabindex="-1"></a>       <span class="at">newGsea =</span> T,</span>
+<span id="cb27-14"><a href="basic-usage.html#cb27-14" tabindex="-1"></a>       <span class="at">rmHt =</span> T)</span></code></pre></div>
 <p align="center">
 <img src="local_images/24.1.png" width="50%">
 </p>
 <p>Control term label width:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="basic-usage.html#cb27-1" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
-<span id="cb27-2"><a href="basic-usage.html#cb27-2" tabindex="-1"></a>       <span class="at">geneSetID =</span> setid,</span>
-<span id="cb27-3"><a href="basic-usage.html#cb27-3" tabindex="-1"></a>       <span class="at">newGsea =</span> T,</span>
-<span id="cb27-4"><a href="basic-usage.html#cb27-4" tabindex="-1"></a>       <span class="at">rmHt =</span> T,</span>
-<span id="cb27-5"><a href="basic-usage.html#cb27-5" tabindex="-1"></a>       <span class="at">termWidth =</span> <span class="dv">20</span>)</span></code></pre></div>
-<p align="center">
-<img src="local_images/24.2.png" width="50%">
-</p>
-<p>Retain Y axis:</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="basic-usage.html#cb28-1" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
 <span id="cb28-2"><a href="basic-usage.html#cb28-2" tabindex="-1"></a>       <span class="at">geneSetID =</span> setid,</span>
 <span id="cb28-3"><a href="basic-usage.html#cb28-3" tabindex="-1"></a>       <span class="at">newGsea =</span> T,</span>
 <span id="cb28-4"><a href="basic-usage.html#cb28-4" tabindex="-1"></a>       <span class="at">rmHt =</span> T,</span>
-<span id="cb28-5"><a href="basic-usage.html#cb28-5" tabindex="-1"></a>       <span class="at">rm.newGsea.ticks =</span> F)</span></code></pre></div>
+<span id="cb28-5"><a href="basic-usage.html#cb28-5" tabindex="-1"></a>       <span class="at">termWidth =</span> <span class="dv">20</span>)</span></code></pre></div>
+<p align="center">
+<img src="local_images/24.2.png" width="50%">
+</p>
+<p>Retain Y axis:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="basic-usage.html#cb29-1" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
+<span id="cb29-2"><a href="basic-usage.html#cb29-2" tabindex="-1"></a>       <span class="at">geneSetID =</span> setid,</span>
+<span id="cb29-3"><a href="basic-usage.html#cb29-3" tabindex="-1"></a>       <span class="at">newGsea =</span> T,</span>
+<span id="cb29-4"><a href="basic-usage.html#cb29-4" tabindex="-1"></a>       <span class="at">rmHt =</span> T,</span>
+<span id="cb29-5"><a href="basic-usage.html#cb29-5" tabindex="-1"></a>       <span class="at">rm.newGsea.ticks =</span> F)</span></code></pre></div>
 <p align="center">
 <img src="local_images/24.3.png" width="50%">
 </p>
 <p>Add pvalue and NES:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="basic-usage.html#cb29-1" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
-<span id="cb29-2"><a href="basic-usage.html#cb29-2" tabindex="-1"></a>       <span class="at">geneSetID =</span> setid,</span>
-<span id="cb29-3"><a href="basic-usage.html#cb29-3" tabindex="-1"></a>       <span class="at">newGsea =</span> T,</span>
-<span id="cb29-4"><a href="basic-usage.html#cb29-4" tabindex="-1"></a>       <span class="at">addPval =</span> T,</span>
-<span id="cb29-5"><a href="basic-usage.html#cb29-5" tabindex="-1"></a>       <span class="at">rmHt =</span> T,</span>
-<span id="cb29-6"><a href="basic-usage.html#cb29-6" tabindex="-1"></a>       <span class="at">pvalX =</span> <span class="fl">0.9</span>,</span>
-<span id="cb29-7"><a href="basic-usage.html#cb29-7" tabindex="-1"></a>       <span class="at">pvalY =</span> <span class="fl">0.5</span>,</span>
-<span id="cb29-8"><a href="basic-usage.html#cb29-8" tabindex="-1"></a>       <span class="at">pFill =</span> <span class="st">&quot;white&quot;</span>)</span></code></pre></div>
-<p align="center">
-<img src="local_images/24.4.png" width="50%">
-</p>
-<p>Add top gene labels:</p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="basic-usage.html#cb30-1" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
 <span id="cb30-2"><a href="basic-usage.html#cb30-2" tabindex="-1"></a>       <span class="at">geneSetID =</span> setid,</span>
 <span id="cb30-3"><a href="basic-usage.html#cb30-3" tabindex="-1"></a>       <span class="at">newGsea =</span> T,</span>
 <span id="cb30-4"><a href="basic-usage.html#cb30-4" tabindex="-1"></a>       <span class="at">addPval =</span> T,</span>
 <span id="cb30-5"><a href="basic-usage.html#cb30-5" tabindex="-1"></a>       <span class="at">rmHt =</span> T,</span>
-<span id="cb30-6"><a href="basic-usage.html#cb30-6" tabindex="-1"></a>       <span class="at">pvalX =</span> <span class="fl">0.8</span>,</span>
+<span id="cb30-6"><a href="basic-usage.html#cb30-6" tabindex="-1"></a>       <span class="at">pvalX =</span> <span class="fl">0.9</span>,</span>
 <span id="cb30-7"><a href="basic-usage.html#cb30-7" tabindex="-1"></a>       <span class="at">pvalY =</span> <span class="fl">0.5</span>,</span>
-<span id="cb30-8"><a href="basic-usage.html#cb30-8" tabindex="-1"></a>       <span class="at">pFill =</span> <span class="st">&quot;white&quot;</span>,</span>
-<span id="cb30-9"><a href="basic-usage.html#cb30-9" tabindex="-1"></a>       <span class="at">addGene =</span> T,</span>
-<span id="cb30-10"><a href="basic-usage.html#cb30-10" tabindex="-1"></a>       <span class="at">markTopgene =</span> T,</span>
-<span id="cb30-11"><a href="basic-usage.html#cb30-11" tabindex="-1"></a>       <span class="at">geneCol =</span> <span class="st">&quot;#009933&quot;</span>)</span></code></pre></div>
+<span id="cb30-8"><a href="basic-usage.html#cb30-8" tabindex="-1"></a>       <span class="at">pFill =</span> <span class="st">&quot;white&quot;</span>)</span></code></pre></div>
+<p align="center">
+<img src="local_images/24.4.png" width="50%">
+</p>
+<p>Add top gene labels:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="basic-usage.html#cb31-1" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
+<span id="cb31-2"><a href="basic-usage.html#cb31-2" tabindex="-1"></a>       <span class="at">geneSetID =</span> setid,</span>
+<span id="cb31-3"><a href="basic-usage.html#cb31-3" tabindex="-1"></a>       <span class="at">newGsea =</span> T,</span>
+<span id="cb31-4"><a href="basic-usage.html#cb31-4" tabindex="-1"></a>       <span class="at">addPval =</span> T,</span>
+<span id="cb31-5"><a href="basic-usage.html#cb31-5" tabindex="-1"></a>       <span class="at">rmHt =</span> T,</span>
+<span id="cb31-6"><a href="basic-usage.html#cb31-6" tabindex="-1"></a>       <span class="at">pvalX =</span> <span class="fl">0.8</span>,</span>
+<span id="cb31-7"><a href="basic-usage.html#cb31-7" tabindex="-1"></a>       <span class="at">pvalY =</span> <span class="fl">0.5</span>,</span>
+<span id="cb31-8"><a href="basic-usage.html#cb31-8" tabindex="-1"></a>       <span class="at">pFill =</span> <span class="st">&quot;white&quot;</span>,</span>
+<span id="cb31-9"><a href="basic-usage.html#cb31-9" tabindex="-1"></a>       <span class="at">addGene =</span> T,</span>
+<span id="cb31-10"><a href="basic-usage.html#cb31-10" tabindex="-1"></a>       <span class="at">markTopgene =</span> T,</span>
+<span id="cb31-11"><a href="basic-usage.html#cb31-11" tabindex="-1"></a>       <span class="at">geneCol =</span> <span class="st">&quot;#009933&quot;</span>)</span></code></pre></div>
 <p align="center">
 <img src="local_images/24.5.png" width="50%">
 </p>
 <p>Change curve colors:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="basic-usage.html#cb31-1" tabindex="-1"></a>setid2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;GOBP_POSITIVE_REGULATION_OF_MUSCLE_HYPERTROPHY&quot;</span>,</span>
-<span id="cb31-2"><a href="basic-usage.html#cb31-2" tabindex="-1"></a>            <span class="st">&quot;GOBP_BIOLOGICAL_PROCESS_INVOLVED_IN_INTERACTION_WITH_SYMBIONT&quot;</span>,</span>
-<span id="cb31-3"><a href="basic-usage.html#cb31-3" tabindex="-1"></a>            <span class="st">&quot;GOBP_POSITIVE_REGULATION_OF_LEUKOCYTE_MIGRATION&quot;</span>,</span>
-<span id="cb31-4"><a href="basic-usage.html#cb31-4" tabindex="-1"></a>            <span class="st">&quot;GOBP_REGULATION_OF_MACROPHAGE_DIFFERENTIATION&quot;</span>,</span>
-<span id="cb31-5"><a href="basic-usage.html#cb31-5" tabindex="-1"></a>            <span class="st">&quot;GOBP_METANEPHRIC_NEPHRON_MORPHOGENESIS&quot;</span>)</span>
-<span id="cb31-6"><a href="basic-usage.html#cb31-6" tabindex="-1"></a></span>
-<span id="cb31-7"><a href="basic-usage.html#cb31-7" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
-<span id="cb31-8"><a href="basic-usage.html#cb31-8" tabindex="-1"></a>       <span class="at">geneSetID =</span> setid2,</span>
-<span id="cb31-9"><a href="basic-usage.html#cb31-9" tabindex="-1"></a>       <span class="at">newGsea =</span> T,</span>
-<span id="cb31-10"><a href="basic-usage.html#cb31-10" tabindex="-1"></a>       <span class="at">addPval =</span> T,</span>
-<span id="cb31-11"><a href="basic-usage.html#cb31-11" tabindex="-1"></a>       <span class="at">rmHt =</span> T,</span>
-<span id="cb31-12"><a href="basic-usage.html#cb31-12" tabindex="-1"></a>       <span class="at">pvalX =</span> <span class="fl">0.8</span>,</span>
-<span id="cb31-13"><a href="basic-usage.html#cb31-13" tabindex="-1"></a>       <span class="at">pvalY =</span> <span class="fl">0.5</span>,</span>
-<span id="cb31-14"><a href="basic-usage.html#cb31-14" tabindex="-1"></a>       <span class="at">pFill =</span> <span class="st">&quot;transparent&quot;</span>,</span>
-<span id="cb31-15"><a href="basic-usage.html#cb31-15" tabindex="-1"></a>       <span class="at">addGene =</span> T,</span>
-<span id="cb31-16"><a href="basic-usage.html#cb31-16" tabindex="-1"></a>       <span class="at">markTopgene =</span> T,</span>
-<span id="cb31-17"><a href="basic-usage.html#cb31-17" tabindex="-1"></a>       <span class="at">geneCol =</span> <span class="st">&quot;#009933&quot;</span>,</span>
-<span id="cb31-18"><a href="basic-usage.html#cb31-18" tabindex="-1"></a>       <span class="at">newCurveCol =</span> <span class="fu">rainbow</span>(<span class="dv">7</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="basic-usage.html#cb32-1" tabindex="-1"></a>setid2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;GOBP_POSITIVE_REGULATION_OF_MUSCLE_HYPERTROPHY&quot;</span>,</span>
+<span id="cb32-2"><a href="basic-usage.html#cb32-2" tabindex="-1"></a>            <span class="st">&quot;GOBP_BIOLOGICAL_PROCESS_INVOLVED_IN_INTERACTION_WITH_SYMBIONT&quot;</span>,</span>
+<span id="cb32-3"><a href="basic-usage.html#cb32-3" tabindex="-1"></a>            <span class="st">&quot;GOBP_POSITIVE_REGULATION_OF_LEUKOCYTE_MIGRATION&quot;</span>,</span>
+<span id="cb32-4"><a href="basic-usage.html#cb32-4" tabindex="-1"></a>            <span class="st">&quot;GOBP_REGULATION_OF_MACROPHAGE_DIFFERENTIATION&quot;</span>,</span>
+<span id="cb32-5"><a href="basic-usage.html#cb32-5" tabindex="-1"></a>            <span class="st">&quot;GOBP_METANEPHRIC_NEPHRON_MORPHOGENESIS&quot;</span>)</span>
+<span id="cb32-6"><a href="basic-usage.html#cb32-6" tabindex="-1"></a></span>
+<span id="cb32-7"><a href="basic-usage.html#cb32-7" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> gseaRes,</span>
+<span id="cb32-8"><a href="basic-usage.html#cb32-8" tabindex="-1"></a>       <span class="at">geneSetID =</span> setid2,</span>
+<span id="cb32-9"><a href="basic-usage.html#cb32-9" tabindex="-1"></a>       <span class="at">newGsea =</span> T,</span>
+<span id="cb32-10"><a href="basic-usage.html#cb32-10" tabindex="-1"></a>       <span class="at">addPval =</span> T,</span>
+<span id="cb32-11"><a href="basic-usage.html#cb32-11" tabindex="-1"></a>       <span class="at">rmHt =</span> T,</span>
+<span id="cb32-12"><a href="basic-usage.html#cb32-12" tabindex="-1"></a>       <span class="at">pvalX =</span> <span class="fl">0.8</span>,</span>
+<span id="cb32-13"><a href="basic-usage.html#cb32-13" tabindex="-1"></a>       <span class="at">pvalY =</span> <span class="fl">0.5</span>,</span>
+<span id="cb32-14"><a href="basic-usage.html#cb32-14" tabindex="-1"></a>       <span class="at">pFill =</span> <span class="st">&quot;transparent&quot;</span>,</span>
+<span id="cb32-15"><a href="basic-usage.html#cb32-15" tabindex="-1"></a>       <span class="at">addGene =</span> T,</span>
+<span id="cb32-16"><a href="basic-usage.html#cb32-16" tabindex="-1"></a>       <span class="at">markTopgene =</span> T,</span>
+<span id="cb32-17"><a href="basic-usage.html#cb32-17" tabindex="-1"></a>       <span class="at">geneCol =</span> <span class="st">&quot;#009933&quot;</span>,</span>
+<span id="cb32-18"><a href="basic-usage.html#cb32-18" tabindex="-1"></a>       <span class="at">newCurveCol =</span> <span class="fu">rainbow</span>(<span class="dv">7</span>))</span></code></pre></div>
 <p align="center">
 <img src="local_images/24.6.png" width="50%">
 </p>
@@ -592,37 +592,37 @@ position they are:</p>
 <h2><span class="header-section-number">2.6</span> KEGG object with marking gene names<a href="basic-usage.html#kegg-object-with-marking-gene-names" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You need use <strong>setReadable</strong> function to transform <strong>ENTEZID</strong> into <strong>SYMBOL</strong> and
 set <strong>kegg = T</strong>:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="basic-usage.html#cb32-1" tabindex="-1"></a><span class="fu">library</span>(clusterProfiler)</span>
-<span id="cb32-2"><a href="basic-usage.html#cb32-2" tabindex="-1"></a><span class="fu">library</span>(org.Hs.eg.db)</span>
-<span id="cb32-3"><a href="basic-usage.html#cb32-3" tabindex="-1"></a><span class="fu">library</span>(enrichplot)</span>
-<span id="cb32-4"><a href="basic-usage.html#cb32-4" tabindex="-1"></a><span class="fu">library</span>(GseaVis)</span>
-<span id="cb32-5"><a href="basic-usage.html#cb32-5" tabindex="-1"></a></span>
-<span id="cb32-6"><a href="basic-usage.html#cb32-6" tabindex="-1"></a><span class="co"># load test data</span></span>
-<span id="cb32-7"><a href="basic-usage.html#cb32-7" tabindex="-1"></a><span class="fu">data</span>(geneList, <span class="at">package=</span><span class="st">&quot;DOSE&quot;</span>)</span>
-<span id="cb32-8"><a href="basic-usage.html#cb32-8" tabindex="-1"></a></span>
-<span id="cb32-9"><a href="basic-usage.html#cb32-9" tabindex="-1"></a><span class="co"># check</span></span>
-<span id="cb32-10"><a href="basic-usage.html#cb32-10" tabindex="-1"></a><span class="fu">head</span>(geneList)</span>
-<span id="cb32-11"><a href="basic-usage.html#cb32-11" tabindex="-1"></a><span class="co"># 4312     8318    10874    55143    55388      991</span></span>
-<span id="cb32-12"><a href="basic-usage.html#cb32-12" tabindex="-1"></a><span class="co"># 4.572613 4.514594 4.418218 4.144075 3.876258 3.677857</span></span>
-<span id="cb32-13"><a href="basic-usage.html#cb32-13" tabindex="-1"></a></span>
-<span id="cb32-14"><a href="basic-usage.html#cb32-14" tabindex="-1"></a><span class="co"># KEGG enrich</span></span>
-<span id="cb32-15"><a href="basic-usage.html#cb32-15" tabindex="-1"></a>kk2 <span class="ot">&lt;-</span> <span class="fu">gseKEGG</span>(<span class="at">geneList     =</span> geneList,</span>
-<span id="cb32-16"><a href="basic-usage.html#cb32-16" tabindex="-1"></a>               <span class="at">organism     =</span> <span class="st">&#39;hsa&#39;</span>,</span>
-<span id="cb32-17"><a href="basic-usage.html#cb32-17" tabindex="-1"></a>               <span class="at">minGSSize    =</span> <span class="dv">120</span>,</span>
-<span id="cb32-18"><a href="basic-usage.html#cb32-18" tabindex="-1"></a>               <span class="at">pvalueCutoff =</span> <span class="fl">0.05</span>,</span>
-<span id="cb32-19"><a href="basic-usage.html#cb32-19" tabindex="-1"></a>               <span class="at">verbose      =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb32-20"><a href="basic-usage.html#cb32-20" tabindex="-1"></a></span>
-<span id="cb32-21"><a href="basic-usage.html#cb32-21" tabindex="-1"></a><span class="co"># transform entrizid to gene symbol</span></span>
-<span id="cb32-22"><a href="basic-usage.html#cb32-22" tabindex="-1"></a>kk2 <span class="ot">&lt;-</span> <span class="fu">setReadable</span>(kk2,</span>
-<span id="cb32-23"><a href="basic-usage.html#cb32-23" tabindex="-1"></a>                   <span class="at">OrgDb =</span> <span class="st">&quot;org.Hs.eg.db&quot;</span>,</span>
-<span id="cb32-24"><a href="basic-usage.html#cb32-24" tabindex="-1"></a>                   <span class="at">keyType =</span> <span class="st">&quot;ENTREZID&quot;</span>)</span>
-<span id="cb32-25"><a href="basic-usage.html#cb32-25" tabindex="-1"></a></span>
-<span id="cb32-26"><a href="basic-usage.html#cb32-26" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> kk2,</span>
-<span id="cb32-27"><a href="basic-usage.html#cb32-27" tabindex="-1"></a>       <span class="at">geneSetID =</span> <span class="st">&#39;hsa05169&#39;</span>,</span>
-<span id="cb32-28"><a href="basic-usage.html#cb32-28" tabindex="-1"></a>       <span class="at">subPlot =</span> <span class="dv">2</span>,</span>
-<span id="cb32-29"><a href="basic-usage.html#cb32-29" tabindex="-1"></a>       <span class="at">addGene =</span> T,</span>
-<span id="cb32-30"><a href="basic-usage.html#cb32-30" tabindex="-1"></a>       <span class="at">kegg =</span> T,</span>
-<span id="cb32-31"><a href="basic-usage.html#cb32-31" tabindex="-1"></a>       <span class="at">markTopgene =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="basic-usage.html#cb33-1" tabindex="-1"></a><span class="fu">library</span>(clusterProfiler)</span>
+<span id="cb33-2"><a href="basic-usage.html#cb33-2" tabindex="-1"></a><span class="fu">library</span>(org.Hs.eg.db)</span>
+<span id="cb33-3"><a href="basic-usage.html#cb33-3" tabindex="-1"></a><span class="fu">library</span>(enrichplot)</span>
+<span id="cb33-4"><a href="basic-usage.html#cb33-4" tabindex="-1"></a><span class="fu">library</span>(GseaVis)</span>
+<span id="cb33-5"><a href="basic-usage.html#cb33-5" tabindex="-1"></a></span>
+<span id="cb33-6"><a href="basic-usage.html#cb33-6" tabindex="-1"></a><span class="co"># load test data</span></span>
+<span id="cb33-7"><a href="basic-usage.html#cb33-7" tabindex="-1"></a><span class="fu">data</span>(geneList, <span class="at">package=</span><span class="st">&quot;DOSE&quot;</span>)</span>
+<span id="cb33-8"><a href="basic-usage.html#cb33-8" tabindex="-1"></a></span>
+<span id="cb33-9"><a href="basic-usage.html#cb33-9" tabindex="-1"></a><span class="co"># check</span></span>
+<span id="cb33-10"><a href="basic-usage.html#cb33-10" tabindex="-1"></a><span class="fu">head</span>(geneList)</span>
+<span id="cb33-11"><a href="basic-usage.html#cb33-11" tabindex="-1"></a><span class="co"># 4312     8318    10874    55143    55388      991</span></span>
+<span id="cb33-12"><a href="basic-usage.html#cb33-12" tabindex="-1"></a><span class="co"># 4.572613 4.514594 4.418218 4.144075 3.876258 3.677857</span></span>
+<span id="cb33-13"><a href="basic-usage.html#cb33-13" tabindex="-1"></a></span>
+<span id="cb33-14"><a href="basic-usage.html#cb33-14" tabindex="-1"></a><span class="co"># KEGG enrich</span></span>
+<span id="cb33-15"><a href="basic-usage.html#cb33-15" tabindex="-1"></a>kk2 <span class="ot">&lt;-</span> <span class="fu">gseKEGG</span>(<span class="at">geneList     =</span> geneList,</span>
+<span id="cb33-16"><a href="basic-usage.html#cb33-16" tabindex="-1"></a>               <span class="at">organism     =</span> <span class="st">&#39;hsa&#39;</span>,</span>
+<span id="cb33-17"><a href="basic-usage.html#cb33-17" tabindex="-1"></a>               <span class="at">minGSSize    =</span> <span class="dv">120</span>,</span>
+<span id="cb33-18"><a href="basic-usage.html#cb33-18" tabindex="-1"></a>               <span class="at">pvalueCutoff =</span> <span class="fl">0.05</span>,</span>
+<span id="cb33-19"><a href="basic-usage.html#cb33-19" tabindex="-1"></a>               <span class="at">verbose      =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb33-20"><a href="basic-usage.html#cb33-20" tabindex="-1"></a></span>
+<span id="cb33-21"><a href="basic-usage.html#cb33-21" tabindex="-1"></a><span class="co"># transform entrizid to gene symbol</span></span>
+<span id="cb33-22"><a href="basic-usage.html#cb33-22" tabindex="-1"></a>kk2 <span class="ot">&lt;-</span> <span class="fu">setReadable</span>(kk2,</span>
+<span id="cb33-23"><a href="basic-usage.html#cb33-23" tabindex="-1"></a>                   <span class="at">OrgDb =</span> <span class="st">&quot;org.Hs.eg.db&quot;</span>,</span>
+<span id="cb33-24"><a href="basic-usage.html#cb33-24" tabindex="-1"></a>                   <span class="at">keyType =</span> <span class="st">&quot;ENTREZID&quot;</span>)</span>
+<span id="cb33-25"><a href="basic-usage.html#cb33-25" tabindex="-1"></a></span>
+<span id="cb33-26"><a href="basic-usage.html#cb33-26" tabindex="-1"></a><span class="fu">gseaNb</span>(<span class="at">object =</span> kk2,</span>
+<span id="cb33-27"><a href="basic-usage.html#cb33-27" tabindex="-1"></a>       <span class="at">geneSetID =</span> <span class="st">&#39;hsa05169&#39;</span>,</span>
+<span id="cb33-28"><a href="basic-usage.html#cb33-28" tabindex="-1"></a>       <span class="at">subPlot =</span> <span class="dv">2</span>,</span>
+<span id="cb33-29"><a href="basic-usage.html#cb33-29" tabindex="-1"></a>       <span class="at">addGene =</span> T,</span>
+<span id="cb33-30"><a href="basic-usage.html#cb33-30" tabindex="-1"></a>       <span class="at">kegg =</span> T,</span>
+<span id="cb33-31"><a href="basic-usage.html#cb33-31" tabindex="-1"></a>       <span class="at">markTopgene =</span> T)</span></code></pre></div>
 <p align="center">
 <img src="local_images/25.png" width="50%">
 </p>
@@ -666,7 +666,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/01-basic-usage.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/01-basic_usage.Rmd",
 "text": "Edit"
 },
 "history": {
