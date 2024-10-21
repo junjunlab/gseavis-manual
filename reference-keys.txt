@@ -1,17 +1,6 @@
 about
 citation
 installation
-low-level-arcgrobs
-arcsectorgrob
-arcaxisgrob
-arcpointgrob
-arcsegmentsgrob
-arclinesgrob
-arcrectgrob
-arcpolygongrob
-arclinksgrob
-arclinks2grob
-arctextgrob
 basic-usage
 classic-visualization
 marking-gene-names
